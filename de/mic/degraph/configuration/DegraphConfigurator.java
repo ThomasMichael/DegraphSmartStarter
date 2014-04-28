@@ -5,11 +5,14 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
-public class DegraphConfigurator {
+public class DegraphConfigurator implements Initializable {
 
 	@FXML
 	private ResourceBundle resources;
@@ -70,6 +73,11 @@ public class DegraphConfigurator {
 
 	@FXML
 	void saveAsAction(ActionEvent event) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Save as..");
+
+		Window stage = filenameSave.getScene().getWindow();
+		fileChooser.showOpenDialog(stage);
 	}
 
 	@FXML
@@ -91,6 +99,12 @@ public class DegraphConfigurator {
 		assert sliceTextarea != null : "fx:id=\"sliceTextarea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert sliceTextfield != null : "fx:id=\"sliceTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert startDegraph != null : "fx:id=\"startDegraph\" was not injected: check your FXML file 'degraph_configure.fxml'.";
+
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		System.out.println("init Control.");
 
 	}
 

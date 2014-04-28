@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="de.mic.degraph.configuration.DegraphConfigurator">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-1.0" minWidth="-1.0" prefHeight="500.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="de.mic.degraph.configuration.DegraphConfigurator">
   <children>
     <AnchorPane layoutX="12.0" layoutY="14.0" minHeight="52.0" prefHeight="52.0" prefWidth="774.0">
       <children>
@@ -60,7 +60,7 @@
                     <Button fx:id="filenameSave" layoutX="219.0" layoutY="25.0" mnemonicParsing="false" onAction="#saveAsAction" text="Save as" />
                     <Text font="$x1" layoutX="14.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename" />
                     <TextField fx:id="filenameTextfield" layoutX="14.0" layoutY="26.0" prefWidth="200.0" promptText="for filename" text="filename" />
-                    <TextArea fx:id="classpathTextArea" layoutX="334.0" layoutY="60.0" prefHeight="236.818359375" prefWidth="409.0" promptText="classpaths" wrapText="true" />
+                    <TextArea fx:id="classpathTextArea" layoutX="330.0" layoutY="60.0" prefHeight="237.0" prefWidth="413.0001220703125" promptText="classpaths" wrapText="true" />
                     <Text font="$x1" layoutX="330.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Classpaths" />
                   </children>
                 </AnchorPane>
