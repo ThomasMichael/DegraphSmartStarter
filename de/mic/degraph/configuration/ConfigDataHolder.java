@@ -15,6 +15,10 @@ public class ConfigDataHolder {
 		super();
 	}
 
+	public File getConfigFilename() {
+		return configFilename;
+	}
+
 	public void setConfigFilename(File fileToSave) {
 		this.configFilename = fileToSave;
 	}
