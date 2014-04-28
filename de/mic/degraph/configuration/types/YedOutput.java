@@ -1,5 +1,7 @@
 package de.mic.degraph.configuration.types;
 
+import static de.mic.degraph.configuration.util.StringUtil.CRLF;
+
 import java.io.File;
 
 /**
@@ -19,6 +21,6 @@ public class YedOutput {
 
 	@Override
 	public String toString() {
-		return "output = " + filename.getAbsolutePath();
+		return "output = " + filename.getAbsolutePath() + CRLF;
 	}
 }

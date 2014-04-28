@@ -40,7 +40,7 @@ public class ConfigFileBuilder {
 	}
 
 	String createContent(ConfigDataHolder data) {
-		return "empty";
+		return data.toString();
 	}
 
 	private void validate(ConfigDataHolder data) {

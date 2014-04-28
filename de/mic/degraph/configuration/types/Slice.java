@@ -1,6 +1,7 @@
 package de.mic.degraph.configuration.types;
 
 import static de.mic.degraph.configuration.util.StringUtil.CRLF;
+import static de.mic.degraph.configuration.util.StringUtil.TAB;
 
 public class Slice {
 
@@ -19,6 +20,7 @@ public class Slice {
 		sb.append(groupName);
 		sb.append(" = {");
 		sb.append(CRLF);
+		sb.append(TAB);
 		sb.append(content);
 		sb.append(CRLF);
 		sb.append("}");
