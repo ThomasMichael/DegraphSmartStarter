@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Window;
+import de.mic.degraph.configuration.types.Slice;
 import de.mic.degraph.configuration.types.YedOutput;
 
 public class DegraphConfigurator {
@@ -73,6 +74,23 @@ public class DegraphConfigurator {
 
 	@FXML
 	void addSliceAction(ActionEvent event) {
+		validateSlice();
+		data.addSlice(new Slice(sliceTextfield.getText(), sliceTextarea
+				.getText()));
+	}
+
+	private void validateSlice() {
+		if (sliceTextfield != null && !sliceTextfield.getText().isEmpty()) {
+
+		} else {
+
+		}
+
+		if (sliceTextarea != null && sliceTextarea.getText().isEmpty()) {
+
+		} else {
+
+		}
 	}
 
 	@FXML
