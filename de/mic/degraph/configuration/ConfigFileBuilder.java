@@ -13,18 +13,18 @@ import java.io.IOException;
  */
 public class ConfigFileBuilder {
 
-	public void build(ConfigDataHolder data) {
+	public File build(ConfigDataHolder data) {
 		validate(data);
 		String content = createContent(data);
 		try {
-			writeContentToFile(data, content);
+			return writeContentToFile(data, content);
 		} catch (IOException e) {
 			System.err.println("File could not be written.");
 		}
-
+		throw new IllegalArgumentException("No File created!");
 	}
 
-	private void writeContentToFile(ConfigDataHolder data, String content)
+	private File writeContentToFile(ConfigDataHolder data, String content)
 			throws IOException {
 		File configFile = new File(data.getConfigFilename().getAbsolutePath());
 
@@ -35,7 +35,7 @@ public class ConfigFileBuilder {
 		BufferedWriter bWriter = new BufferedWriter(writer);
 		bWriter.write(content);
 		bWriter.close();
-
+		return configFile;
 	}
 
 	String createContent(ConfigDataHolder data) {
@@ -43,7 +43,8 @@ public class ConfigFileBuilder {
 	}
 
 	private void validate(ConfigDataHolder data) {
-		assert data.getConfigFilename() != null : "No Filename set!";
+		if (data.getConfigFilename() == null)
+			throw new IllegalArgumentException("No Filename set!");
 
 	}
 }
