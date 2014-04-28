@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="600.0000999999975" xmlns:fx="http://javafx.com/fxml" fx:controller="de.mic.degraph.configuration.DegraphConfigurator">
+  <children>
+    <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="146.0" prefWidth="571.9999000000025">
+      <children>
+        <Text layoutX="14.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename">
+          <font>
+            <Font name="Rod" size="12.0" fx:id="x1" />
+          </font>
+        </Text>
+        <Text font="$x1" layoutX="14.0" layoutY="83.0" scaleX="1.0" scaleY="0.9999916666668772" strokeType="OUTSIDE" strokeWidth="0.0" text="Classpath" />
+        <TextField layoutX="14.0" layoutY="53.0" prefWidth="200.0" promptText="for filename" text="filename" />
+        <TextField layoutX="14.0" layoutY="87.0" prefWidth="200.0" promptText="for classpath" />
+        <Button layoutX="222.0" layoutY="86.0" mnemonicParsing="false" text="Add" />
+        <Button layoutX="219.0" layoutY="52.0" mnemonicParsing="false" text="Save as" />
+        <Text layoutX="114.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Degraph Configurator">
+          <font>
+            <Font name="Rod" size="28.0" />
+          </font>
+        </Text>
+        <Button fx:id="startDegraph" layoutX="333.0" layoutY="49.0" mnemonicParsing="false" onAction="#startDegraph" style="fx-background-color: green;&#10;" text="Start Degraph" textOverrun="ELLIPSIS">
+          <font>
+            <Font size="30.0" />
+          </font>
+        </Button>
+      </children>
+    </AnchorPane>
+    <Line endX="490.0" layoutX="105.0" layoutY="133.0" startX="-100.0" />
+    <TabPane layoutX="13.0" layoutY="186.0" prefHeight="286.0" prefWidth="558.0" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+        <Tab text="Exclude">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="214.0" prefWidth="558.0">
+              <children>
+                <TextField layoutX="14.0" layoutY="14.0" prefWidth="200.0" promptText="org.something.**" text="" />
+                <Button layoutX="207.0" layoutY="14.0" mnemonicParsing="false" text="Add" />
+                <TextArea layoutX="14.0" layoutY="35.0" prefWidth="193.0" text="java*.**&#10;scala.**&#10;org.scalatest.**&#10;org.junit.**" wrapText="true" />
+                <CheckBox layoutX="279.0" layoutY="17.0" mnemonicParsing="false" text="Exclude Java Library" />
+                <CheckBox layoutX="279.0" layoutY="36.0" mnemonicParsing="false" text="Exclude Scala Library" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="Include">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Text font="$x1" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Slice name" />
+                <TextField layoutX="14.0" layoutY="30.0" prefWidth="114.0" promptText="name of slice" text="" />
+                <TextArea layoutX="14.0" layoutY="52.0" prefHeight="148.0" prefWidth="259.0" promptText="com.myPackage.**" wrapText="true" />
+                <Button layoutX="128.0" layoutY="30.0" mnemonicParsing="false" text="Add Slice and Packages" />
+                <TextArea layoutX="285.0" layoutY="52.0" prefHeight="148.0" prefWidth="259.0" promptText="MySlice = com.myPackage.**;com.theirPackage.**" wrapText="true" />
+                <Text font="$x1" layoutX="285.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defined Slices" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+      </tabs>
+    </TabPane>
+    <Text layoutX="13.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Include and/or exlude files by using pattern.">
+      <font>
+        <Font name="Rod" size="18.0" />
+      </font>
+    </Text>
+  </children>
+</AnchorPane>
