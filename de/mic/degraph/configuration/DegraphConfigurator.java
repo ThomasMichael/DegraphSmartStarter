@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Window;
+import de.mic.degraph.configuration.types.YedOutput;
 
 public class DegraphConfigurator {
 
@@ -87,11 +88,12 @@ public class DegraphConfigurator {
 		Window stage = filenameSave.getScene().getWindow();
 		File fileToSave = fileChooser.showSaveDialog(stage);
 		System.out.println("File: " + fileToSave);
-		data.setConfigFilename(fileToSave);
+		data.setOutput(new YedOutput(fileToSave));
 	}
 
 	@FXML
 	void startDegraphAction(ActionEvent event) {
+
 	}
 
 	@FXML

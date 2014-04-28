@@ -1,6 +1,6 @@
 package de.mic.degraph.configuration;
 
-import java.io.File;
+import de.mic.degraph.configuration.types.YedOutput;
 
 /**
  * This class represents the whole date for degraph configuration.
@@ -9,17 +9,25 @@ import java.io.File;
  */
 public class ConfigDataHolder {
 
-	File configFilename;
+	YedOutput output;
 
 	public ConfigDataHolder() {
 		super();
 	}
 
-	public File getConfigFilename() {
-		return configFilename;
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(output.toString());
+		return sb.toString();
 	}
 
-	public void setConfigFilename(File fileToSave) {
-		this.configFilename = fileToSave;
+	public YedOutput getOutput() {
+		return output;
 	}
+
+	public void setOutput(YedOutput output) {
+		this.output = output;
+	}
+
 }

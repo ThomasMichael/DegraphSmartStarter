@@ -8,6 +8,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import de.mic.degraph.configuration.types.YedOutput;
+
 public class ConfigFileBuilderTest {
 
 	ConfigFileBuilder builder = new ConfigFileBuilder();
@@ -27,7 +29,7 @@ public class ConfigFileBuilderTest {
 	@Test
 	public void someConfioFileShouldExistOnFilesystem() throws IOException {
 		ConfigDataHolder data = new ConfigDataHolder();
-		data.setConfigFilename(File.createTempFile("pre", "suff"));
+		data.setOutput(new YedOutput(File.createTempFile("pre", "suff")));
 		File build = builder.build(data);
 		assertTrue(build.exists());
 	}
