@@ -50,7 +50,7 @@ public class ConfigFileBuilderTest {
 	@Test
 	public void fileShouldHaveSlice() throws Exception {
 		ConfigDataHolder data = new ConfigDataHolder();
-		data.addSlice(new Slice("part", "de.mic.*.(*).**"));
+		data.addGroup(new Slice("part", "de.mic.*.(*).**"));
 		data.setOutput(new YedOutput(new File("dosntMatter")));
 		File build = builder.build(data);
 		String fileContent = getFileInput(build);
@@ -90,7 +90,7 @@ public class ConfigFileBuilderTest {
 
 		public ConfigDataHolder getTestdata(String yedFileName) {
 			ConfigDataHolder data = new ConfigDataHolder();
-			data.addSlice(new Slice("part", "de.mic.*.(*).**"));
+			data.addGroup(new Slice("part", "de.mic.*.(*).**"));
 			data.setOutput(new YedOutput(new File(yedFileName)));
 			return data;
 		}

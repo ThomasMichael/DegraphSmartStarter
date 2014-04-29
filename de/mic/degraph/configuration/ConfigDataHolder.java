@@ -1,5 +1,8 @@
 package de.mic.degraph.configuration;
 
+import java.io.File;
+
+import de.mic.degraph.configuration.types.ClassPathes;
 import de.mic.degraph.configuration.types.Slice;
 import de.mic.degraph.configuration.types.Slices;
 import de.mic.degraph.configuration.types.YedOutput;
@@ -12,6 +15,7 @@ import de.mic.degraph.configuration.types.YedOutput;
 public class ConfigDataHolder {
 
 	private YedOutput output;
+	private final ClassPathes classpaths = new ClassPathes();
 	private final Slices slices = new Slices();
 
 	public ConfigDataHolder() {
@@ -22,6 +26,7 @@ public class ConfigDataHolder {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(output.toString());
+		sb.append(classpaths.toString());
 		sb.append(slices.toString());
 		return sb.toString();
 	}
@@ -35,13 +40,22 @@ public class ConfigDataHolder {
 	}
 
 	/**
-	 * Adds a Slice
+	 * Adds a Slice.
 	 * 
 	 * @param slice
 	 */
-	public void addSlice(Slice slice) {
+	public void addGroup(Slice slice) {
 		this.slices.addSlice(slice);
 
+	}
+
+	/**
+	 * Adds a classpath.
+	 * 
+	 * @param classPath
+	 */
+	public void addClassPath(File classPath) {
+		this.classpaths.addClasspath(classPath);
 	}
 
 }

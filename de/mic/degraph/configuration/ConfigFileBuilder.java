@@ -7,9 +7,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 /**
- * Creates a new Configfile
- * 
- * @author thomicha
+ * Creates a new Configfile.
  * 
  */
 public class ConfigFileBuilder {
