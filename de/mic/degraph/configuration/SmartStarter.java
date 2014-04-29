@@ -8,9 +8,6 @@ import javafx.stage.Stage;
 
 public class SmartStarter extends Application {
 
-	// @FXML
-	// DegraphConfigurator control;
-
 	@Override
 	public void start(Stage stage) throws Exception {
 
@@ -21,8 +18,6 @@ public class SmartStarter extends Application {
 		stage.setTitle("Degraph Configurator");
 		stage.setScene(scene);
 		stage.show();
-
-		// control.setStage(stage);
 	}
 
 	public static void main(String[] args) {

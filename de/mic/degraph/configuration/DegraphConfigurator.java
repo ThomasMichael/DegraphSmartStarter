@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Window;
+import de.mic.degraph.configuration.types.Including;
 import de.mic.degraph.configuration.types.Slice;
 import de.mic.degraph.configuration.types.YedOutput;
 
@@ -82,6 +83,9 @@ public class DegraphConfigurator {
 
 	@FXML
 	void addIncludeAction(ActionEvent event) {
+		if (!this.includeTextfield.getText().isEmpty()) {
+			data.addCluding(new Including(this.includeTextfield.getText()));
+		}
 	}
 
 	@FXML
