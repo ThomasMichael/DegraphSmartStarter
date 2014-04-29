@@ -46,7 +46,7 @@
               <content>
                 <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
-                    <Text layoutX="14.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which classes, packages should be ignored by degraph?">
+                    <Text layoutX="14.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which classes, packages should be analyzed by degraph?">
                       <font>
                         <Font name="Rod" size="18.0" fx:id="x2" />
                       </font>
