@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class holds all defined slices.
+ * This class holds all defined slices/groups.
  * 
  * @author thomicha
  * 

@@ -10,7 +10,9 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import de.mic.degraph.configuration.types.Excluding;
 import de.mic.degraph.configuration.types.Group;
+import de.mic.degraph.configuration.types.Including;
 import de.mic.degraph.configuration.types.YedOutput;
 
 public class ConfigFileBuilderTest {
@@ -56,6 +58,21 @@ public class ConfigFileBuilderTest {
 		String fileContent = getFileInput(build);
 		assertTrue(fileContent.contains("part"));
 		assertTrue(fileContent.contains("de.mic."));
+		build.delete();
+	}
+
+	@Test
+	public void fileShouldIncludeAndExlude() throws Exception {
+		ConfigDataHolder data = new ConfigDataHolder();
+		data.addGroup(new Group("part", "de.mic.*.(*).**"));
+		data.setOutput(new YedOutput(new File("dosntMatter")));
+		data.addCluding(new Excluding("java.**"));
+		data.addCluding(new Including("de.schauderhaft.*"));
+
+		File build = builder.build(data);
+		String fileContent = getFileInput(build);
+		assertTrue(fileContent.contains("java"));
+		assertTrue(fileContent.contains("de.schauderhaft."));
 		build.delete();
 	}
 

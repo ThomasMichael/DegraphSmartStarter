@@ -19,7 +19,7 @@ public class ConfigDataHolder {
 	private YedOutput output;
 	private final ClassPathes classpaths = new ClassPathes();
 	private final Groups slices = new Groups();
-	private Cludings cludings;
+	private final Cludings cludings = new Cludings();
 
 	public ConfigDataHolder() {
 		super();
@@ -30,6 +30,7 @@ public class ConfigDataHolder {
 		StringBuilder sb = new StringBuilder();
 		sb.append(output.toString());
 		sb.append(classpaths.toString());
+		sb.append(cludings.toString());
 		sb.append(slices.toString());
 		return sb.toString();
 	}
