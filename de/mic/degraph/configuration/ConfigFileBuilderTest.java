@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import de.mic.degraph.configuration.types.Slice;
+import de.mic.degraph.configuration.types.Group;
 import de.mic.degraph.configuration.types.YedOutput;
 
 public class ConfigFileBuilderTest {
@@ -50,7 +50,7 @@ public class ConfigFileBuilderTest {
 	@Test
 	public void fileShouldHaveSlice() throws Exception {
 		ConfigDataHolder data = new ConfigDataHolder();
-		data.addGroup(new Slice("part", "de.mic.*.(*).**"));
+		data.addGroup(new Group("part", "de.mic.*.(*).**"));
 		data.setOutput(new YedOutput(new File("dosntMatter")));
 		File build = builder.build(data);
 		String fileContent = getFileInput(build);
@@ -90,7 +90,7 @@ public class ConfigFileBuilderTest {
 
 		public ConfigDataHolder getTestdata(String yedFileName) {
 			ConfigDataHolder data = new ConfigDataHolder();
-			data.addGroup(new Slice("part", "de.mic.*.(*).**"));
+			data.addGroup(new Group("part", "de.mic.*.(*).**"));
 			data.setOutput(new YedOutput(new File(yedFileName)));
 			return data;
 		}

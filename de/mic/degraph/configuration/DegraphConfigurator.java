@@ -13,7 +13,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Window;
 import de.mic.degraph.configuration.types.Including;
-import de.mic.degraph.configuration.types.Slice;
+import de.mic.degraph.configuration.types.Group;
 import de.mic.degraph.configuration.types.YedOutput;
 
 public class DegraphConfigurator {
@@ -77,7 +77,7 @@ public class DegraphConfigurator {
 	@FXML
 	void addGroupAction(ActionEvent event) {
 		validateGroup();
-		data.addGroup(new Slice(sliceTextfield.getText(), sliceTextarea
+		data.addGroup(new Group(sliceTextfield.getText(), sliceTextarea
 				.getText()));
 	}
 

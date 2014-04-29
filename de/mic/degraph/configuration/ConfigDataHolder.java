@@ -5,8 +5,8 @@ import java.io.File;
 import de.mic.degraph.configuration.types.ClassPathes;
 import de.mic.degraph.configuration.types.Cluding;
 import de.mic.degraph.configuration.types.Cludings;
-import de.mic.degraph.configuration.types.Slice;
-import de.mic.degraph.configuration.types.Slices;
+import de.mic.degraph.configuration.types.Group;
+import de.mic.degraph.configuration.types.Groups;
 import de.mic.degraph.configuration.types.YedOutput;
 
 /**
@@ -18,7 +18,7 @@ public class ConfigDataHolder {
 
 	private YedOutput output;
 	private final ClassPathes classpaths = new ClassPathes();
-	private final Slices slices = new Slices();
+	private final Groups slices = new Groups();
 	private Cludings cludings;
 
 	public ConfigDataHolder() {
@@ -47,7 +47,7 @@ public class ConfigDataHolder {
 	 * 
 	 * @param slice
 	 */
-	public void addGroup(Slice slice) {
+	public void addGroup(Group slice) {
 		this.slices.addSlice(slice);
 
 	}
