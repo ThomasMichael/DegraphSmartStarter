@@ -15,7 +15,6 @@ public class DegraphFinder {
 
 	public File find(File root) {
 
-		System.out.println("Root: " + root.getPath());
 		FileFilter degraphFilter = new FileFilter() {
 
 			@Override
@@ -29,7 +28,6 @@ public class DegraphFinder {
 
 	private File search(File current, FileFilter filter) {
 
-		System.out.println(current.getAbsolutePath());
 		if (current.isDirectory()) {
 			File[] expected = current.listFiles(filter);
 			if (expected != null) {
