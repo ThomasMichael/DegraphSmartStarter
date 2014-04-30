@@ -12,8 +12,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Window;
-import de.mic.degraph.configuration.types.Including;
+import de.mic.degraph.configuration.types.Excluding;
 import de.mic.degraph.configuration.types.Group;
+import de.mic.degraph.configuration.types.Including;
 import de.mic.degraph.configuration.types.YedOutput;
 
 public class DegraphConfigurator {
@@ -97,6 +98,9 @@ public class DegraphConfigurator {
 
 	@FXML
 	void addExcludeAction(ActionEvent event) {
+		if (!this.includeTextfield.getText().isEmpty()) {
+			data.addCluding(new Excluding(this.excludeTextfield.getText()));
+		}
 	}
 
 	private void validateGroup() {
@@ -131,7 +135,8 @@ public class DegraphConfigurator {
 
 	@FXML
 	void startDegraphAction(ActionEvent event) {
-
+		System.out.println("Config-File:");
+		System.out.println(data);
 	}
 
 	@FXML

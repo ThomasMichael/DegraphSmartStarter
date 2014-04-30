@@ -1,5 +1,7 @@
 package de.mic.degraph.configuration;
 
+import static de.mic.degraph.configuration.util.StringUtil.CRLF;
+
 import java.io.File;
 
 import de.mic.degraph.configuration.types.ClassPathes;
@@ -28,7 +30,7 @@ public class ConfigDataHolder {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(output.toString());
+		sb.append(output == null ? "noName" + CRLF : output.toString());
 		sb.append(classpaths.toString());
 		sb.append(cludings.toString());
 		sb.append(slices.toString());

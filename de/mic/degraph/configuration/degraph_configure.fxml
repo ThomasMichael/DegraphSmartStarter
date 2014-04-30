@@ -70,6 +70,16 @@
                     <Text font="$x1" layoutX="425.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defined Group" />
                     <Line endX="100.0" layoutX="389.0" layoutY="131.0" rotate="90.0" startX="-100.0" />
                     <Text font="$x2" layoutX="13.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Included packages could be grouped by defined name." />
+                    <TextField layoutX="14.0" layoutY="264.0" prefWidth="176.0" promptText="de.schauderhaft" />
+                    <TextField layoutX="252.0" layoutY="264.0" prefWidth="176.0" promptText="types.view" />
+                    <Label layoutX="214.0" layoutY="264.0" text=".*.">
+                      <font>
+                        <Font size="16.0" />
+                      </font>
+                    </Label>
+                    <Label layoutX="80.0" layoutY="248.0" text="Pre Path" />
+                    <Label layoutX="190.0" layoutY="250.0" text="Groupname" />
+                    <Label layoutX="315.0" layoutY="251.0" text="Post Path" />
                   </children>
                 </AnchorPane>
               </content>
