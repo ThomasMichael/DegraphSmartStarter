@@ -64,6 +64,7 @@ public class ConfigFileBuilderTest {
 	@Test
 	public void fileShouldIncludeAndExlude() throws Exception {
 		ConfigDataHolder data = new ConfigDataHolder();
+		data.addClassPath(new File("de/java/"));
 		data.addGroup(new Group("part", "de.mic.*.(*).**"));
 		data.setOutput(new YedOutput(new File("dosntMatter")));
 		data.addCluding(new Excluding("java.**"));
