@@ -96,15 +96,15 @@
               <content>
                 <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="388.0" prefWidth="779.0">
                   <children>
-                    <Button fx:id="filenameSave" layoutX="259.0" layoutY="98.0" mnemonicParsing="false" onAction="#saveAsAction" text="Save as" />
+                    <Button fx:id="filenameSave" layoutX="609.0" layoutY="98.0" mnemonicParsing="false" onAction="#saveAsAction" text="Save as" />
                     <Text font="$x1" layoutX="55.0" layoutY="96.0" scaleX="1.0241372770884187" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename for yed" />
-                    <TextField fx:id="filenameTextfield" editable="false" layoutX="54.0" layoutY="100.0" prefWidth="200.0" promptText="for filename" text="" />
-                    <TextField id="degrpahPath" fx:id="degraphPath" layoutX="54.0" layoutY="142.0" prefWidth="200.0" promptText="path to degraph.jar" />
+                    <TextField fx:id="filenameTextfield" editable="false" layoutX="54.0" layoutY="100.0" prefWidth="547.2890625" promptText="for filename" text="" />
+                    <TextField id="degrpahPath" fx:id="degraphPath" layoutX="55.0" layoutY="142.0" prefWidth="548.0" promptText="path to degraph.jar" />
                     <Text font="$x1" layoutX="55.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Path to Degraph" />
-                    <Button layoutX="261.0" layoutY="143.0" mnemonicParsing="false" onAction="#openDegraphSearchDialog" text="Search" />
+                    <Button layoutX="611.0" layoutY="143.0" mnemonicParsing="false" onAction="#openDegraphSearchDialog" text="Search" />
                     <Text font="$x1" layoutX="55.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Path to Yed" />
-                    <TextField id="degrpahPath" fx:id="pathToYed" layoutX="55.0" layoutY="184.0" prefWidth="200.0" promptText="path to yed" />
-                    <Button fx:id="searchYedButton" layoutX="260.0" layoutY="185.0" mnemonicParsing="false" onAction="#openYedSearchDialog" text="Search" />
+                    <TextField id="degrpahPath" fx:id="pathToYed" layoutX="55.0" layoutY="184.0" prefWidth="548.0" promptText="path to yed" />
+                    <Button fx:id="searchYedButton" layoutX="610.0" layoutY="185.0" mnemonicParsing="false" onAction="#openYedSearchDialog" text="Search" />
                     <Button fx:id="startDegraph" layoutX="272.0" layoutY="321.0" mnemonicParsing="false" onAction="#startDegraphAction" style="fx-background-color: green;&#10;" text="Start Degraph" textOverrun="ELLIPSIS">
                       <font>
                         <Font size="30.0" />

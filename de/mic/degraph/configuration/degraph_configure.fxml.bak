@@ -71,11 +71,7 @@
                     <Button id="sliceButtoon" fx:id="groupButtoon" layoutX="55.0" layoutY="278.0" mnemonicParsing="false" onAction="#addGroupAction" text="Add Group" />
                     <TextArea id="sliceTextarea" fx:id="definedSlices" layoutX="467.0" layoutY="129.0" prefHeight="148.0" prefWidth="270.0" promptText="MyGroup = com.myPackage.**;com.theirPackage.**" wrapText="true" />
                     <Text font="$x1" layoutX="467.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defined Group" />
-                    <Text layoutX="56.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group your packages.">
-                      <font>
-                        <Font name="Rod" size="18.0" fx:id="x2" />
-                      </font>
-                    </Text>
+                    <Text font="$x4" layoutX="56.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group your packages." />
                     <Label font="$x3" layoutX="0.0" layoutY="0.0" text="3." />
                   </children>
                 </AnchorPane>
