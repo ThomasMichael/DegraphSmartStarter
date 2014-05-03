@@ -25,4 +25,26 @@ public class Cludings {
 		}
 		return sb.toString();
 	}
+
+	public List<Cluding> getIncluding() {
+		List<Cluding> result = new ArrayList<Cluding>();
+
+		for (Cluding c : cludings) {
+			if (c instanceof Including) {
+				result.add(c);
+			}
+		}
+		return result;
+	}
+
+	public List<Cluding> getExcluding() {
+		List<Cluding> result = new ArrayList<Cluding>();
+
+		for (Cluding c : cludings) {
+			if (c instanceof Excluding) {
+				result.add(c);
+			}
+		}
+		return result;
+	}
 }

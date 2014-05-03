@@ -92,4 +92,12 @@ public class ConfigDataHolder {
 	public File getDegraphConfigFile() {
 		return degraphConfigFile;
 	}
+
+	public List<Cluding> getIncludes() {
+		return cludings.getIncluding();
+	}
+
+	public List<Cluding> getExcludes() {
+		return cludings.getExcluding();
+	}
 }

@@ -16,6 +16,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Window;
+import de.mic.degraph.configuration.types.Cluding;
 import de.mic.degraph.configuration.types.Excluding;
 import de.mic.degraph.configuration.types.Group;
 import de.mic.degraph.configuration.types.Including;
@@ -126,7 +127,19 @@ public class DegraphConfigurator {
 	void addIncludeAction(ActionEvent event) {
 		if (!this.includeTextfield.getText().isEmpty()) {
 			data.addCluding(new Including(this.includeTextfield.getText()));
+			setIncludeField();
 		}
+	}
+
+	private void setIncludeField() {
+		this.includeTextArea.clear();
+		StringBuilder sb = new StringBuilder();
+		for (Cluding i : data.getIncludes()) {
+			sb.append(i.toString());
+			sb.append(CRLF);
+		}
+
+		this.includeTextArea.setText(sb.toString());
 	}
 
 	@FXML
