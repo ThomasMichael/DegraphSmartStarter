@@ -5,6 +5,7 @@ import static de.mic.degraph.configuration.util.StringUtil.CRLF;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -18,6 +19,10 @@ public class ClassPathes {
 
 	public void addClasspath(File classPath) {
 		classPaths.add(classPath);
+	}
+
+	public List<File> getAllClasspaths() {
+		return Collections.unmodifiableList(classPaths);
 	}
 
 	@Override

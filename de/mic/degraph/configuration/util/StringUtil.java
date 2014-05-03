@@ -20,6 +20,6 @@ public final class StringUtil {
 	/*
 	 * Separator for classpaths, depends on OS.
 	 */
-	public static String CLASSPATHSEPARATOR = File.separator;
+	public static String CLASSPATHSEPARATOR = File.pathSeparator;
 
 }

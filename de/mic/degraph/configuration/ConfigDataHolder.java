@@ -3,6 +3,7 @@ package de.mic.degraph.configuration;
 import static de.mic.degraph.configuration.util.StringUtil.CRLF;
 
 import java.io.File;
+import java.util.List;
 
 import de.mic.degraph.configuration.types.ClassPathes;
 import de.mic.degraph.configuration.types.Cluding;
@@ -73,4 +74,7 @@ public class ConfigDataHolder {
 		cludings.addCluding(including);
 	}
 
+	public List<File> getClassPaths() {
+		return classpaths.getAllClasspaths();
+	}
 }

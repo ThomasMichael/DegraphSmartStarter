@@ -1,5 +1,7 @@
 package de.mic.degraph.configuration;
 
+import static de.mic.degraph.configuration.util.StringUtil.CRLF;
+
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Window;
@@ -83,6 +86,9 @@ public class DegraphConfigurator {
 	@FXML
 	private TextField pathToYed;
 
+	@FXML
+	private Button searchClasspath;
+
 	private final ConfigDataHolder data = new ConfigDataHolder();
 
 	private boolean notStarted = true;
@@ -97,6 +103,20 @@ public class DegraphConfigurator {
 	@FXML
 	void openYedSearchDialog(ActionEvent event) {
 
+	}
+
+	@FXML
+	void openClasspathSearchDialog(ActionEvent event) {
+
+		DirectoryChooser classpathSearcher = new DirectoryChooser();
+		classpathSearcher.setTitle("Search Classpath");
+		// classpathSearcher.setInitialDirectory(new File);
+		File classPathFile = classpathSearcher.showDialog(filenameSave
+				.getScene().getWindow());
+		if (classPathFile != null) {
+			data.addClassPath(classPathFile);
+		}
+		setClasspathTextArea();
 	}
 
 	@FXML
@@ -140,14 +160,19 @@ public class DegraphConfigurator {
 
 	@FXML
 	void saveAsAction(ActionEvent event) {
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Save as..");
+		FileChooser fileChooser = createFileChooser("Save as..");
 		fileChooser.getExtensionFilters().add(
 				new ExtensionFilter("yed", "graphml"));
 		Window stage = filenameSave.getScene().getWindow();
 		File fileToSave = fileChooser.showSaveDialog(stage);
 		System.out.println("File: " + fileToSave);
 		data.setOutput(new YedOutput(fileToSave));
+	}
+
+	private FileChooser createFileChooser(String title) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle(title);
+		return fileChooser;
 	}
 
 	@FXML
@@ -163,6 +188,16 @@ public class DegraphConfigurator {
 			System.out.println("Start");
 		new ManageDegraphFinder(degraphPath);
 		notStarted = false;
+	}
+
+	public void setClasspathTextArea() {
+		classpathTextArea.clear();
+		StringBuilder sb = new StringBuilder();
+		for (File f : data.getClassPaths()) {
+			sb.append(f.getAbsolutePath());
+			sb.append(CRLF);
+		}
+		classpathTextArea.setText(sb.toString());
 	}
 
 	@FXML
@@ -182,6 +217,7 @@ public class DegraphConfigurator {
 		assert includeTextArea != null : "fx:id=\"includeTextArea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert includeTextfield != null : "fx:id=\"includeTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert pathToYed != null : "fx:id=\"pathToYed\" was not injected: check your FXML file 'degraph_configure.fxml'.";
+		assert searchClasspath != null : "fx:id=\"searchClasspath\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert searchYedButton != null : "fx:id=\"searchYedButton\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert sliceTextarea != null : "fx:id=\"sliceTextarea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert sliceTextfield != null : "fx:id=\"sliceTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
