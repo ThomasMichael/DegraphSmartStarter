@@ -11,8 +11,9 @@ public class DegraphFinderTest {
 	@Test
 	public void performanceFinder() {
 		long start = System.currentTimeMillis();
-		DegraphFinder degraphFinder = new DegraphFinder();
-		File find = degraphFinder.find(new File(File.separator));
+		FileFinder degraphFinder = new FileFinder();
+		File find = degraphFinder
+				.find(new File(File.separator), "Degraph*.jar");
 		assertNotNull(find);
 		long stop = System.currentTimeMillis() - start;
 		System.out.println("Dauer normal:" + stop / 1000);
@@ -21,9 +22,10 @@ public class DegraphFinderTest {
 	@Test
 	public void performanceFinderReverse() {
 		long start = System.currentTimeMillis();
-		DegraphFinder degraphFinder = new DegraphFinder();
+		FileFinder degraphFinder = new FileFinder();
 		degraphFinder.setReverse(true);
-		File find = degraphFinder.find(new File(File.separator));
+		File find = degraphFinder
+				.find(new File(File.separator), "Degraph*.jar");
 		assertNotNull(find);
 		long stop = System.currentTimeMillis() - start;
 		System.out.println("Dauer reverse:" + stop / 1000);
@@ -38,8 +40,9 @@ public class DegraphFinderTest {
 
 			@Override
 			public void run() {
-				DegraphFinder degraphFinder = new DegraphFinder();
-				File find = degraphFinder.find(new File(File.separator));
+				FileFinder degraphFinder = new FileFinder();
+				File find = degraphFinder.find(new File(File.separator),
+						"Degraph*.jar");
 				found.setFile(find);
 			}
 		};
@@ -50,9 +53,10 @@ public class DegraphFinderTest {
 
 			@Override
 			public void run() {
-				DegraphFinder degraphFinder = new DegraphFinder();
+				FileFinder degraphFinder = new FileFinder();
 				degraphFinder.setReverse(true);
-				File find = degraphFinder.find(new File(File.separator));
+				File find = degraphFinder.find(new File(File.separator),
+						"Degraph*.jar");
 				found.setFile(find);
 			}
 		};

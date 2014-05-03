@@ -4,12 +4,12 @@ import java.io.File;
 
 import javafx.scene.control.TextField;
 
-public class ManageDegraphFinder {
+public class ManageFileFinder {
 
 	private final TextField field;
 
-	public ManageDegraphFinder(TextField degraphPath) {
-		this.field = degraphPath;
+	public ManageFileFinder(TextField fieldForPath) {
+		this.field = fieldForPath;
 		setDepgraphFilePath();
 	}
 
@@ -19,8 +19,9 @@ public class ManageDegraphFinder {
 
 			@Override
 			public void run() {
-				DegraphFinder degraphFinder = new DegraphFinder();
-				File find = degraphFinder.find(new File(File.separator));
+				FileFinder degraphFinder = new FileFinder();
+				File find = degraphFinder.find(new File(File.separator),
+						"Degraph*.jar");
 				if (field == null) {
 					System.out.println("Feld ist null!");
 				} else {

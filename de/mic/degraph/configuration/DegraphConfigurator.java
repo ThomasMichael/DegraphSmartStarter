@@ -186,7 +186,7 @@ public class DegraphConfigurator {
 	void startDegraphFinder(MouseEvent event) {
 		if (notStarted)
 			System.out.println("Start");
-		new ManageDegraphFinder(degraphPath);
+		new ManageFileFinder(degraphPath);
 		notStarted = false;
 	}
 
@@ -223,7 +223,7 @@ public class DegraphConfigurator {
 		assert sliceTextfield != null : "fx:id=\"sliceTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert startDegraph != null : "fx:id=\"startDegraph\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 
-		new ManageDegraphFinder(degraphPath);
+		new ManageFileFinder(degraphPath);
 	}
 
 	void setDegraph(String pathToDegraph) {

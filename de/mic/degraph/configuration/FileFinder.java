@@ -13,18 +13,17 @@ import java.util.List;
  * @author thomicha
  * 
  */
-public class DegraphFinder {
+public class FileFinder {
 
-	private final String degraphName = "Degraph.*.jar";
 	private boolean reverse;
 
-	public File find(File root) {
+	public File find(File root, final String searchFileName) {
 
 		FileFilter degraphFilter = new FileFilter() {
 
 			@Override
 			public boolean accept(File f) {
-				return f.isFile() && f.getName().matches(degraphName);
+				return f.isFile() && f.getName().matches(searchFileName);
 			}
 		};
 		return search(root, degraphFilter);
