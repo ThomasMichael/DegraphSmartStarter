@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.UUID;
 
 /**
  * Creates a new Configfile.
@@ -25,7 +24,7 @@ public class ConfigFileBuilder {
 
 	private File writeContentToFile(ConfigDataHolder data, String content)
 			throws IOException {
-		File configFile = new File(UUID.randomUUID().toString());
+		File configFile = data.getDegraphConfigFile();
 
 		if (!configFile.exists()) {
 			configFile.createNewFile();

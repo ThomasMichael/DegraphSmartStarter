@@ -112,6 +112,9 @@
                     </Button>
                     <Label font="$x3" layoutX="0.0" layoutY="2.0" text="5." />
                     <Text font="$x4" layoutX="55.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Path to degraph, yed and yed-file." />
+                    <Button id="filenameSave" layoutX="609.0" layoutY="227.0" mnemonicParsing="false" onAction="#saveAsConfigFileAction" text="Save as" />
+                    <Text font="$x1" layoutX="56.0" layoutY="225.0" scaleX="1.0241372770884187" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename for THIS config file" />
+                    <TextField id="filenameTextfield" fx:id="pathToDegraphConfig" editable="false" layoutX="54.0" layoutY="229.0" prefWidth="547.2890625" promptText="config file name" text="" />
                   </children>
                 </AnchorPane>
               </content>

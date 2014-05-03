@@ -13,7 +13,7 @@ import de.mic.degraph.configuration.types.Groups;
 import de.mic.degraph.configuration.types.YedOutput;
 
 /**
- * This class represents the whole date for degraph configuration.
+ * This class represents the data for a degraph configuration.
  * 
  * 
  */
@@ -23,6 +23,7 @@ public class ConfigDataHolder {
 	private final ClassPathes classpaths = new ClassPathes();
 	private final Groups slices = new Groups();
 	private final Cludings cludings = new Cludings();
+	private File degraphConfigFile;
 
 	public ConfigDataHolder() {
 		super();
@@ -76,5 +77,19 @@ public class ConfigDataHolder {
 
 	public List<File> getClassPaths() {
 		return classpaths.getAllClasspaths();
+	}
+
+	/**
+	 * Set the path for the degrpah config file.
+	 * 
+	 * @param degraphConfigFile
+	 */
+	public void setDegraphConfig(File degraphConfigFile) {
+		this.degraphConfigFile = degraphConfigFile;
+
+	}
+
+	public File getDegraphConfigFile() {
+		return degraphConfigFile;
 	}
 }

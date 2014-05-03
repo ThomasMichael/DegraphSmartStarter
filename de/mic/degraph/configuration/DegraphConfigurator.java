@@ -87,6 +87,9 @@ public class DegraphConfigurator {
 	private TextField pathToYed;
 
 	@FXML
+	private TextField pathToDegraphConfig;
+
+	@FXML
 	private Button searchClasspath;
 
 	private final ConfigDataHolder data = new ConfigDataHolder();
@@ -169,6 +172,20 @@ public class DegraphConfigurator {
 		data.setOutput(new YedOutput(fileToSave));
 	}
 
+	@FXML
+	void saveAsConfigFileAction(ActionEvent event) {
+		FileChooser fileChooser = createFileChooser("Save as..");
+		fileChooser.getExtensionFilters().add(
+				new ExtensionFilter("Degraph Config", "config"));
+		Window stage = filenameSave.getScene().getWindow();
+		File fileToSave = fileChooser.showSaveDialog(stage);
+		System.out.println("File: " + fileToSave);
+		if (fileToSave != null) {
+			data.setDegraphConfig(fileToSave);
+			this.pathToDegraphConfig.setText(fileToSave.getAbsolutePath());
+		}
+	}
+
 	private FileChooser createFileChooser(String title) {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle(title);
@@ -180,6 +197,8 @@ public class DegraphConfigurator {
 
 		System.out.println("Config-File:");
 		System.out.println(data);
+		new ConfigFileBuilder().build(data);
+		// Start degraph
 	}
 
 	@FXML
