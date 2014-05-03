@@ -101,7 +101,7 @@
                 <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="388.0" prefWidth="779.0">
                   <children>
                     <Button fx:id="filenameSave" layoutX="259.0" layoutY="98.0" mnemonicParsing="false" onAction="#saveAsAction" text="Save as" />
-                    <Text font="$x1" layoutX="54.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename" />
+                    <Text font="$x1" layoutX="55.0" layoutY="96.0" scaleX="1.0241372770884187" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename for yed" />
                     <TextField fx:id="filenameTextfield" editable="false" layoutX="54.0" layoutY="100.0" prefWidth="200.0" promptText="for filename" text="" />
                     <TextField id="degrpahPath" fx:id="degraphPath" layoutX="54.0" layoutY="142.0" prefWidth="200.0" promptText="path to degraph.jar" />
                     <Text font="$x1" layoutX="55.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Path to Degraph" />
