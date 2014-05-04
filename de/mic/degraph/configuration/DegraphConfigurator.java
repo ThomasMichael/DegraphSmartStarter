@@ -24,6 +24,10 @@ import de.mic.degraph.configuration.types.YedOutput;
 
 public class DegraphConfigurator {
 
+	private static final String YED_JAR = "yed.jar";
+
+	private static final String DEGRAPH_JAR = "degraph*.bat";
+
 	@FXML
 	private ResourceBundle resources;
 
@@ -136,10 +140,22 @@ public class DegraphConfigurator {
 		this.includeTextArea.setText(sb.toString());
 	}
 
+	private void setExcludeField() {
+		this.excludeTextArea.clear();
+		StringBuilder sb = new StringBuilder();
+		for (Cluding i : data.getExcludes()) {
+			sb.append(i.toString());
+			sb.append(CRLF);
+		}
+
+		this.excludeTextArea.setText(sb.toString());
+	}
+
 	@FXML
 	void addExcludeAction(ActionEvent event) {
-		if (!this.includeTextfield.getText().isEmpty()) {
+		if (!this.excludeTextfield.getText().isEmpty()) {
 			data.addCluding(new Excluding(this.excludeTextfield.getText()));
+			setExcludeField();
 		}
 	}
 
@@ -241,8 +257,8 @@ public class DegraphConfigurator {
 		assert sliceTextfield != null : "fx:id=\"sliceTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert startDegraph != null : "fx:id=\"startDegraph\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		// Setting path to degraph and yED
-		new ManageFileFinder(pathToDegraph).findFileAndSet("Degraph*.jar");
-		new ManageFileFinder(this.pathToYed).findFileAndSet("yed.jar");
+		new ManageFileFinder(pathToDegraph).findFileAndSet(DEGRAPH_JAR);
+		new ManageFileFinder(this.pathToYed).findFileAndSet(YED_JAR);
 	}
 
 }
