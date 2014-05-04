@@ -1,5 +1,7 @@
 package de.mic.degraph.configuration.types;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class CludingsTest {
@@ -16,5 +18,32 @@ public class CludingsTest {
 
 		System.out.println(cludings.toString());
 
+	}
+
+	@Test
+	public void shouldGetOneExlude() throws Exception {
+		Cludings cludings = new Cludings();
+		cludings.addCluding(new Excluding("java.*"));
+		cludings.addCluding(new Including("de.schauderhaft.*"));
+		cludings.addCluding(new Including("de.mic.*"));
+
+		assertEquals(1, cludings.getCluding(Excluding.class).size());
+
+	}
+
+	@Test
+	public void shouldGetTwoInclude() throws Exception {
+		Cludings cludings = getTestdata();
+
+		assertEquals(2, cludings.getCluding(Including.class).size());
+
+	}
+
+	private Cludings getTestdata() {
+		Cludings cludings = new Cludings();
+		cludings.addCluding(new Excluding("java.*"));
+		cludings.addCluding(new Including("de.schauderhaft.*"));
+		cludings.addCluding(new Including("de.mic.*"));
+		return cludings;
 	}
 }

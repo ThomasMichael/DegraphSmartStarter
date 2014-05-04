@@ -9,8 +9,10 @@ import java.util.Set;
 import de.mic.degraph.configuration.types.ClassPathes;
 import de.mic.degraph.configuration.types.Cluding;
 import de.mic.degraph.configuration.types.Cludings;
+import de.mic.degraph.configuration.types.Excluding;
 import de.mic.degraph.configuration.types.Group;
 import de.mic.degraph.configuration.types.Groups;
+import de.mic.degraph.configuration.types.Including;
 import de.mic.degraph.configuration.types.YedOutput;
 
 /**
@@ -95,10 +97,10 @@ public class ConfigDataHolder {
 	}
 
 	public Set<Cluding> getIncludes() {
-		return cludings.getIncluding();
+		return cludings.getCluding(Including.class);
 	}
 
 	public Set<Cluding> getExcludes() {
-		return cludings.getExcluding();
+		return cludings.getCluding(Excluding.class);
 	}
 }

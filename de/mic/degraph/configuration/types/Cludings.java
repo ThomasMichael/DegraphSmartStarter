@@ -28,25 +28,16 @@ public class Cludings {
 		return sb.toString();
 	}
 
-	public Set<Cluding> getIncluding() {
+	public Set<Cluding> getCluding(Class<? extends Cluding> clazz) {
 		Set<Cluding> result = new HashSet<Cluding>();
-
 		for (Cluding c : cludings) {
-			if (c instanceof Including) {
+
+			if (c.getClass().equals(clazz)) {
 				result.add(c);
 			}
 		}
+
 		return result;
 	}
 
-	public Set<Cluding> getExcluding() {
-		Set<Cluding> result = new HashSet<Cluding>();
-
-		for (Cluding c : cludings) {
-			if (c instanceof Excluding) {
-				result.add(c);
-			}
-		}
-		return result;
-	}
 }

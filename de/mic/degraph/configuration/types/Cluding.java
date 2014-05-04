@@ -5,7 +5,7 @@ package de.mic.degraph.configuration.types;
  * 
  * 
  */
-public class Cluding {
+public abstract class Cluding {
 
 	String content;
 
