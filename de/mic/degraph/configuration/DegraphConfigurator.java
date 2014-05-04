@@ -49,7 +49,7 @@ public class DegraphConfigurator {
 	private TextField excludeTextfield;
 
 	@FXML
-	private Button filenameSave;
+	private Button graphmlSaveAs;
 
 	@FXML
 	private TextField filenameTextfield;
@@ -109,7 +109,7 @@ public class DegraphConfigurator {
 		DirectoryChooser classpathSearcher = new DirectoryChooser();
 		classpathSearcher.setTitle("Search Classpath");
 		// classpathSearcher.setInitialDirectory(new File);
-		File classPathFile = classpathSearcher.showDialog(filenameSave
+		File classPathFile = classpathSearcher.showDialog(graphmlSaveAs
 				.getScene().getWindow());
 		if (classPathFile != null) {
 			data.addClassPath(classPathFile);
@@ -162,11 +162,11 @@ public class DegraphConfigurator {
 	}
 
 	@FXML
-	void saveAsAction(ActionEvent event) {
+	void graphmlSaveAsAction(ActionEvent event) {
 		FileChooser fileChooser = createFileChooser("Save as..");
 		fileChooser.getExtensionFilters().add(
 				new ExtensionFilter("yed", "graphml"));
-		Window stage = filenameSave.getScene().getWindow();
+		Window stage = graphmlSaveAs.getScene().getWindow();
 		File fileToSave = fileChooser.showSaveDialog(stage);
 		System.out.println("File: " + fileToSave);
 		data.setOutput(new YedOutput(fileToSave));
@@ -177,7 +177,7 @@ public class DegraphConfigurator {
 		FileChooser fileChooser = createFileChooser("Save as..");
 		fileChooser.getExtensionFilters().add(
 				new ExtensionFilter("Degraph Config", "config"));
-		Window stage = filenameSave.getScene().getWindow();
+		Window stage = graphmlSaveAs.getScene().getWindow();
 		File fileToSave = fileChooser.showSaveDialog(stage);
 		System.out.println("File: " + fileToSave);
 		if (fileToSave != null) {
@@ -227,7 +227,7 @@ public class DegraphConfigurator {
 		assert degraphPath != null : "fx:id=\"degraphPath\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert excludeTextArea != null : "fx:id=\"excludeTextArea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert excludeTextfield != null : "fx:id=\"excludeTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
-		assert filenameSave != null : "fx:id=\"filenameSave\" was not injected: check your FXML file 'degraph_configure.fxml'.";
+		assert graphmlSaveAs != null : "fx:id=\"graphmlSaveAs\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert filenameTextfield != null : "fx:id=\"filenameTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert groupButtoon != null : "fx:id=\"groupButtoon\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert includeButton != null : "fx:id=\"includeButton\" was not injected: check your FXML file 'degraph_configure.fxml'.";
