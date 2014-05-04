@@ -18,6 +18,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Window;
 import de.mic.degraph.configuration.types.Cluding;
+import de.mic.degraph.configuration.types.Excluding;
 import de.mic.degraph.configuration.types.Group;
 import de.mic.degraph.configuration.types.Including;
 import de.mic.degraph.configuration.types.YedOutput;
@@ -97,7 +98,6 @@ public class DegraphConfigurator {
 
 	@FXML
 	void addGroupAction(ActionEvent event) {
-		validateGroup();
 		data.addGroup(new Group(sliceTextfield.getText(), sliceTextarea
 				.getText()));
 	}
@@ -123,21 +123,20 @@ public class DegraphConfigurator {
 
 	@FXML
 	void addIncludeAction(ActionEvent event) {
-		if (!this.includeTextfield.getText().isEmpty()) {
-			data.addCluding(new Including(this.includeTextfield.getText()));
-			setIncludeField();
-		}
-	}
+		HandleCludings handleCludings = new HandleCludings() {
 
-	private void setIncludeField() {
-		this.includeTextArea.clear();
-		StringBuilder sb = new StringBuilder();
-		for (Cluding i : data.getIncludes()) {
-			sb.append(i.toString());
-			sb.append(CRLF);
-		}
+			@Override
+			public Set<Cluding> getData() {
+				return data.getIncludes();
+			}
 
-		this.includeTextArea.setText(sb.toString());
+			@Override
+			public Cluding addNewCluding(String text) {
+				return new Including(text);
+			}
+		};
+		handleCludings.addExcludeAction(event, includeTextfield,
+				includeTextArea, data);
 	}
 
 	@FXML
@@ -148,23 +147,15 @@ public class DegraphConfigurator {
 			public Set<Cluding> getData() {
 				return data.getExcludes();
 			}
+
+			@Override
+			public Cluding addNewCluding(String text) {
+				return new Excluding(text);
+			}
 		};
-		handleCludings.addExcludeAction(event, excludeTextArea, data);
+		handleCludings.addExcludeAction(event, excludeTextfield,
+				excludeTextArea, data);
 
-	}
-
-	private void validateGroup() {
-		if (sliceTextfield != null && !sliceTextfield.getText().isEmpty()) {
-
-		} else {
-
-		}
-
-		if (sliceTextarea != null && sliceTextarea.getText().isEmpty()) {
-
-		} else {
-
-		}
 	}
 
 	@FXML
