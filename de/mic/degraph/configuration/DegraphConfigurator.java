@@ -5,6 +5,7 @@ import static de.mic.degraph.configuration.util.StringUtil.CRLF;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +18,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Window;
 import de.mic.degraph.configuration.types.Cluding;
-import de.mic.degraph.configuration.types.Excluding;
 import de.mic.degraph.configuration.types.Group;
 import de.mic.degraph.configuration.types.Including;
 import de.mic.degraph.configuration.types.YedOutput;
@@ -140,23 +140,17 @@ public class DegraphConfigurator {
 		this.includeTextArea.setText(sb.toString());
 	}
 
-	private void setExcludeField() {
-		this.excludeTextArea.clear();
-		StringBuilder sb = new StringBuilder();
-		for (Cluding i : data.getExcludes()) {
-			sb.append(i.toString());
-			sb.append(CRLF);
-		}
-
-		this.excludeTextArea.setText(sb.toString());
-	}
-
 	@FXML
 	void addExcludeAction(ActionEvent event) {
-		if (!this.excludeTextfield.getText().isEmpty()) {
-			data.addCluding(new Excluding(this.excludeTextfield.getText()));
-			setExcludeField();
-		}
+		HandleCludings handleCludings = new HandleCludings() {
+
+			@Override
+			public Set<Cluding> getData() {
+				return data.getExcludes();
+			}
+		};
+		handleCludings.addExcludeAction(event, excludeTextArea, data);
+
 	}
 
 	private void validateGroup() {
