@@ -245,7 +245,4 @@ public class DegraphConfigurator {
 		new ManageFileFinder(this.pathToYed).findFileAndSet("yed.jar");
 	}
 
-	void setDegraph(String pathToDegraph) {
-		this.pathToDegraph.setText(pathToDegraph);
-	}
 }
