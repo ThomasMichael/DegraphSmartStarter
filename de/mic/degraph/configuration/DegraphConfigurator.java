@@ -40,19 +40,16 @@ public class DegraphConfigurator {
 	private TextArea definedSlices;
 
 	@FXML
-	private TextField degraphPath;
-
-	@FXML
 	private TextArea excludeTextArea;
 
 	@FXML
 	private TextField excludeTextfield;
 
 	@FXML
-	private Button graphmlSaveAs;
+	private TextField filenameTextfield;
 
 	@FXML
-	private TextField filenameTextfield;
+	private Button graphmlSaveAs;
 
 	@FXML
 	private Button groupButtoon;
@@ -65,6 +62,9 @@ public class DegraphConfigurator {
 
 	@FXML
 	private TextField includeTextfield;
+
+	@FXML
+	private TextField pathToDegraph;
 
 	@FXML
 	private TextField pathToDegraphConfig;
@@ -205,7 +205,7 @@ public class DegraphConfigurator {
 	void startDegraphFinder(MouseEvent event) {
 		if (notStarted)
 			System.out.println("Start");
-		new ManageFileFinder(degraphPath);
+		new ManageFileFinder(pathToDegraph);
 		notStarted = false;
 	}
 
@@ -224,15 +224,15 @@ public class DegraphConfigurator {
 		assert addExcludeButton != null : "fx:id=\"addExcludeButton\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert classpathTextArea != null : "fx:id=\"classpathTextArea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert definedSlices != null : "fx:id=\"definedSlices\" was not injected: check your FXML file 'degraph_configure.fxml'.";
-		assert degraphPath != null : "fx:id=\"degraphPath\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert excludeTextArea != null : "fx:id=\"excludeTextArea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert excludeTextfield != null : "fx:id=\"excludeTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
-		assert graphmlSaveAs != null : "fx:id=\"graphmlSaveAs\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert filenameTextfield != null : "fx:id=\"filenameTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
+		assert graphmlSaveAs != null : "fx:id=\"graphmlSaveAs\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert groupButtoon != null : "fx:id=\"groupButtoon\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert includeButton != null : "fx:id=\"includeButton\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert includeTextArea != null : "fx:id=\"includeTextArea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert includeTextfield != null : "fx:id=\"includeTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
+		assert pathToDegraph != null : "fx:id=\"pathToDegraph\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert pathToDegraphConfig != null : "fx:id=\"pathToDegraphConfig\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert pathToYed != null : "fx:id=\"pathToYed\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert searchClasspath != null : "fx:id=\"searchClasspath\" was not injected: check your FXML file 'degraph_configure.fxml'.";
@@ -240,10 +240,12 @@ public class DegraphConfigurator {
 		assert sliceTextarea != null : "fx:id=\"sliceTextarea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert sliceTextfield != null : "fx:id=\"sliceTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert startDegraph != null : "fx:id=\"startDegraph\" was not injected: check your FXML file 'degraph_configure.fxml'.";
-		new ManageFileFinder(degraphPath);
+		// Setting path to degraph and yED
+		new ManageFileFinder(pathToDegraph).findFileAndSet("Degraph*.jar");
+		new ManageFileFinder(this.pathToYed).findFileAndSet("yed.jar");
 	}
 
 	void setDegraph(String pathToDegraph) {
-		this.degraphPath.setText(pathToDegraph);
+		this.pathToDegraph.setText(pathToDegraph);
 	}
 }

@@ -82,6 +82,16 @@ public class DegraphFinderTest {
 		System.out.println("Dauer Thread:" + stop / 1000);
 	}
 
+	@Test
+	public void yedFinderTest() {
+		long start = System.currentTimeMillis();
+		FileFinder degraphFinder = new FileFinder();
+		File find = degraphFinder.find(new File(File.separator), "yed.jar");
+		assertNotNull(find);
+		long stop = System.currentTimeMillis() - start;
+		System.out.println("Dauer normal:" + stop / 1000);
+	}
+
 	class FileWrapper {
 		File file;
 

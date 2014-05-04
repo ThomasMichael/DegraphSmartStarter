@@ -50,12 +50,8 @@
                 <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
                     <Text font="$x4" layoutX="64.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which classes, packages should be analyzed" />
-                    <HBox id="HBox" alignment="CENTER" layoutX="64.0" layoutY="94.0" spacing="5.0">
-                      <children>
-                        <TextField fx:id="includeTextfield" prefWidth="235.0" />
-                        <Button fx:id="includeButton" mnemonicParsing="false" onAction="#addIncludeAction" text="Add" />
-                      </children>
-                    </HBox>
+                    <TextField fx:id="includeTextfield" layoutX="64.0" layoutY="94.0" prefWidth="235.0" />
+                    <Button fx:id="includeButton" layoutX="304.0" layoutY="95.0" mnemonicParsing="false" onAction="#addIncludeAction" text="Add" />
                     <TextArea fx:id="includeTextArea" layoutX="64.0" layoutY="116.0" prefWidth="235.0" wrapText="true" />
                     <Label font="$x3" layoutX="0.0" layoutY="0.0" text="2." />
                     <Text font="$x4" layoutX="64.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="by degraph." />
@@ -83,13 +79,9 @@
               <content>
                 <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="214.0" prefWidth="558.0">
                   <children>
-                    <HBox id="HBox" alignment="CENTER" layoutX="55.0" layoutY="91.0" spacing="5.0">
-                      <children>
-                        <TextField fx:id="excludeTextfield" prefWidth="200.0" promptText="org.something.**" text="" />
-                        <Button id="addExclude" fx:id="addExcludeButton" mnemonicParsing="false" onAction="#addExcludeAction" text="Add" />
-                      </children>
-                    </HBox>
-                    <TextArea fx:id="excludeTextArea" layoutX="55.0" layoutY="123.0" prefWidth="200.0" promptText="java*.**" text="" wrapText="true" />
+                    <TextField fx:id="excludeTextfield" layoutX="64.0" layoutY="94.0" prefWidth="235.0" promptText="org.something.**" text="" />
+                    <Button id="addExclude" fx:id="addExcludeButton" layoutX="304.0" layoutY="95.0" mnemonicParsing="false" onAction="#addExcludeAction" text="Add" />
+                    <TextArea fx:id="excludeTextArea" layoutX="64.0" layoutY="116.0" prefWidth="235.0" promptText="java*.**" text="" wrapText="true" />
                     <Text font="$x4" layoutX="55.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exclude packages." />
                     <Label font="$x3" layoutX="0.0" layoutY="0.0" text="4." />
                   </children>
@@ -106,15 +98,15 @@
                         <Button id="filenameSave" fx:id="graphmlSaveAs" mnemonicParsing="false" onAction="#graphmlSaveAsAction" text="Save as" />
                       </children>
                     </HBox>
-                    <Text font="$x1" layoutX="58.0" layoutY="216.0" scaleX="1.0241372770884187" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename for yed" />
+                    <Text font="$x1" layoutX="58.0" layoutY="216.0" scaleX="1.0241372770884187" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename for yED" />
                     <HBox id="HBox" alignment="CENTER" layoutX="57.0" layoutY="98.0" spacing="5.0">
                       <children>
-                        <TextField id="degrpahPath" fx:id="degraphPath" prefWidth="548.0" promptText="path to degraph.jar" />
+                        <TextField id="degrpahPath" fx:id="pathToDegraph" prefWidth="548.0" promptText="path to degraph.jar" />
                         <Button mnemonicParsing="false" onAction="#openDegraphSearchDialog" text="Search" />
                       </children>
                     </HBox>
                     <Text font="$x1" layoutX="57.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Path to Degraph" />
-                    <Text font="$x1" layoutX="56.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Path to Yed" />
+                    <Text font="$x1" layoutX="56.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Path to yED" />
                     <HBox id="HBox" alignment="CENTER" layoutX="57.0" layoutY="140.0" spacing="5.0">
                       <children>
                         <TextField id="degrpahPath" fx:id="pathToYed" prefWidth="548.0" promptText="path to yed" />

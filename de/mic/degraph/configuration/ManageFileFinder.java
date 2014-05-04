@@ -10,20 +10,19 @@ public class ManageFileFinder {
 
 	public ManageFileFinder(TextField fieldForPath) {
 		this.field = fieldForPath;
-		setDepgraphFilePath();
 	}
 
-	public void setDepgraphFilePath() {
+	public void findFileAndSet(final String filename) {
 
 		Runnable runnable = new Runnable() {
 
 			@Override
 			public void run() {
-				FileFinder degraphFinder = new FileFinder();
-				File find = degraphFinder.find(new File(File.separator),
-						"Degraph*.jar");
-				if (field == null) {
-					System.out.println("Feld ist null!");
+				FileFinder finder = new FileFinder();
+				File find = finder.find(new File(File.separator), filename);
+				if (field == null || find == null) {
+					System.out.println("Nothing found! Searching for: "
+							+ filename);
 				} else {
 					field.setText(find.getAbsolutePath());
 				}
