@@ -4,6 +4,7 @@ import static de.mic.degraph.configuration.util.StringUtil.CRLF;
 
 import java.io.File;
 import java.util.List;
+import java.util.Set;
 
 import de.mic.degraph.configuration.types.ClassPathes;
 import de.mic.degraph.configuration.types.Cluding;
@@ -93,11 +94,11 @@ public class ConfigDataHolder {
 		return degraphConfigFile;
 	}
 
-	public List<Cluding> getIncludes() {
+	public Set<Cluding> getIncludes() {
 		return cludings.getIncluding();
 	}
 
-	public List<Cluding> getExcludes() {
+	public Set<Cluding> getExcludes() {
 		return cludings.getExcluding();
 	}
 }

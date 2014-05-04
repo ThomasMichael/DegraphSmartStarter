@@ -2,18 +2,20 @@ package de.mic.degraph.configuration.types;
 
 import static de.mic.degraph.configuration.util.StringUtil.CRLF;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * This class represents a list of cludings (exclude and include)
  * 
  */
 public class Cludings {
-	List<Cluding> cludings = new ArrayList<>();
+	Set<Cluding> cludings = new HashSet<>();
 
 	public void addCluding(Cluding clude) {
-		cludings.add(clude);
+		if (!cludings.contains(clude)) {
+			cludings.add(clude);
+		}
 	}
 
 	@Override
@@ -26,8 +28,8 @@ public class Cludings {
 		return sb.toString();
 	}
 
-	public List<Cluding> getIncluding() {
-		List<Cluding> result = new ArrayList<Cluding>();
+	public Set<Cluding> getIncluding() {
+		Set<Cluding> result = new HashSet<Cluding>();
 
 		for (Cluding c : cludings) {
 			if (c instanceof Including) {
@@ -37,8 +39,8 @@ public class Cludings {
 		return result;
 	}
 
-	public List<Cluding> getExcluding() {
-		List<Cluding> result = new ArrayList<Cluding>();
+	public Set<Cluding> getExcluding() {
+		Set<Cluding> result = new HashSet<Cluding>();
 
 		for (Cluding c : cludings) {
 			if (c instanceof Excluding) {

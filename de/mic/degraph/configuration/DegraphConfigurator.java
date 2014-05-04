@@ -40,6 +40,9 @@ public class DegraphConfigurator {
 	private TextArea definedSlices;
 
 	@FXML
+	private TextField degraphPath;
+
+	@FXML
 	private TextArea excludeTextArea;
 
 	@FXML
@@ -64,6 +67,18 @@ public class DegraphConfigurator {
 	private TextField includeTextfield;
 
 	@FXML
+	private TextField pathToDegraphConfig;
+
+	@FXML
+	private TextField pathToYed;
+
+	@FXML
+	private Button searchClasspath;
+
+	@FXML
+	private Button searchYedButton;
+
+	@FXML
 	private TextArea sliceTextarea;
 
 	@FXML
@@ -71,21 +86,6 @@ public class DegraphConfigurator {
 
 	@FXML
 	private Button startDegraph;
-
-	@FXML
-	private Button searchYedButton;
-
-	@FXML
-	private TextField degraphPath;
-
-	@FXML
-	private TextField pathToYed;
-
-	@FXML
-	private TextField pathToDegraphConfig;
-
-	@FXML
-	private Button searchClasspath;
 
 	private final ConfigDataHolder data = new ConfigDataHolder();
 
@@ -233,13 +233,13 @@ public class DegraphConfigurator {
 		assert includeButton != null : "fx:id=\"includeButton\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert includeTextArea != null : "fx:id=\"includeTextArea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert includeTextfield != null : "fx:id=\"includeTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
+		assert pathToDegraphConfig != null : "fx:id=\"pathToDegraphConfig\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert pathToYed != null : "fx:id=\"pathToYed\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert searchClasspath != null : "fx:id=\"searchClasspath\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert searchYedButton != null : "fx:id=\"searchYedButton\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert sliceTextarea != null : "fx:id=\"sliceTextarea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert sliceTextfield != null : "fx:id=\"sliceTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert startDegraph != null : "fx:id=\"startDegraph\" was not injected: check your FXML file 'degraph_configure.fxml'.";
-
 		new ManageFileFinder(degraphPath);
 	}
 
