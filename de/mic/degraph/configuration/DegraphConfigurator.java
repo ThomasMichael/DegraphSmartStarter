@@ -84,10 +84,10 @@ public class DegraphConfigurator {
 	private Button searchYedButton;
 
 	@FXML
-	private TextArea sliceTextarea;
+	private TextArea groupTextarea;
 
 	@FXML
-	private TextField sliceTextfield;
+	private TextField groupTextfield;
 
 	@FXML
 	private Button startDegraph;
@@ -98,8 +98,10 @@ public class DegraphConfigurator {
 
 	@FXML
 	void addGroupAction(ActionEvent event) {
-		data.addGroup(new Group(sliceTextfield.getText(), sliceTextarea
-				.getText()));
+		if (!groupTextfield.getText().isEmpty()) {
+			data.addGroup(new Group(groupTextfield.getText(), groupTextarea
+					.getText()));
+		}
 	}
 
 	@FXML
@@ -238,8 +240,8 @@ public class DegraphConfigurator {
 		assert pathToYed != null : "fx:id=\"pathToYed\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert searchClasspath != null : "fx:id=\"searchClasspath\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert searchYedButton != null : "fx:id=\"searchYedButton\" was not injected: check your FXML file 'degraph_configure.fxml'.";
-		assert sliceTextarea != null : "fx:id=\"sliceTextarea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
-		assert sliceTextfield != null : "fx:id=\"sliceTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
+		assert groupTextarea != null : "fx:id=\"sliceTextarea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
+		assert groupTextfield != null : "fx:id=\"sliceTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert startDegraph != null : "fx:id=\"startDegraph\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		// Setting path to degraph and yED
 		new ManageFileFinder(pathToDegraph).findFileAndSet(DEGRAPH_JAR);
