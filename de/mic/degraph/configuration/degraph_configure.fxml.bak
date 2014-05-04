@@ -28,7 +28,6 @@
                         <Font name="Rod" size="12.0" fx:id="x1" />
                       </font>
                     </Text>
-                    <Button fx:id="addClasspathButton" layoutX="332.0" layoutY="96.0" mnemonicParsing="false" onAction="#addClasspathAction" text="Add" />
                     <Button id="searchYedButton" fx:id="searchClasspath" layoutX="270.0" layoutY="96.0" mnemonicParsing="false" onAction="#openClasspathSearchDialog" text="Search" />
                     <TextArea fx:id="classpathTextArea" layoutX="62.0" layoutY="129.0" prefHeight="135.0" prefWidth="616.0" promptText="classpaths" wrapText="true" />
                     <Text font="$x1" layoutX="62.0" layoutY="92.0" scaleX="1.0" scaleY="0.9999916666668772" strokeType="OUTSIDE" strokeWidth="0.0" text="Classpath" />
@@ -98,7 +97,7 @@
                   <children>
                     <Button fx:id="filenameSave" layoutX="609.0" layoutY="98.0" mnemonicParsing="false" onAction="#saveAsAction" text="Save as" />
                     <Text font="$x1" layoutX="55.0" layoutY="96.0" scaleX="1.0241372770884187" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename for yed" />
-                    <TextField fx:id="filenameTextfield" editable="false" layoutX="54.0" layoutY="100.0" prefWidth="547.2890625" promptText="for filename" text="c:\Temp\Eample1.graphml" />
+                    <TextField fx:id="filenameTextfield" editable="false" layoutX="54.0" layoutY="100.0" prefWidth="547.2890625" promptText="for filename" text="" />
                     <TextField id="degrpahPath" fx:id="degraphPath" layoutX="55.0" layoutY="142.0" prefWidth="548.0" promptText="path to degraph.jar" />
                     <Text font="$x1" layoutX="55.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Path to Degraph" />
                     <Button layoutX="611.0" layoutY="143.0" mnemonicParsing="false" onAction="#openDegraphSearchDialog" text="Search" />
@@ -114,7 +113,7 @@
                     <Text font="$x4" layoutX="55.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Path to degraph, yed and yed-file." />
                     <Button id="filenameSave" layoutX="609.0" layoutY="227.0" mnemonicParsing="false" onAction="#saveAsConfigFileAction" text="Save as" />
                     <Text font="$x1" layoutX="56.0" layoutY="225.0" scaleX="1.0241372770884187" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename for THIS config file" />
-                    <TextField id="filenameTextfield" fx:id="pathToDegraphConfig" editable="false" layoutX="54.0" layoutY="229.0" prefWidth="547.2890625" promptText="config file name" text="c:\Temp\config.txt" />
+                    <TextField id="filenameTextfield" fx:id="pathToDegraphConfig" editable="false" layoutX="54.0" layoutY="229.0" prefWidth="547.2890625" promptText="config file name" text="" />
                   </children>
                 </AnchorPane>
               </content>

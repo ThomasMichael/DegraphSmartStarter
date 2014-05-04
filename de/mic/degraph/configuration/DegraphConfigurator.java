@@ -31,16 +31,10 @@ public class DegraphConfigurator {
 	private URL location;
 
 	@FXML
-	private Button addClasspathButton;
-
-	@FXML
 	private Button addExcludeButton;
 
 	@FXML
 	private TextArea classpathTextArea;
-
-	@FXML
-	private TextField classpathTextfield;
 
 	@FXML
 	private TextArea definedSlices;
@@ -143,13 +137,6 @@ public class DegraphConfigurator {
 	}
 
 	@FXML
-	void addClasspathAction(ActionEvent event) {
-		if (!classpathTextfield.getText().isEmpty()) {
-			data.addClassPath(new File(classpathTextfield.getText()));
-		}
-	}
-
-	@FXML
 	void addExcludeAction(ActionEvent event) {
 		if (!this.includeTextfield.getText().isEmpty()) {
 			data.addCluding(new Excluding(this.excludeTextfield.getText()));
@@ -234,10 +221,8 @@ public class DegraphConfigurator {
 
 	@FXML
 	void initialize() {
-		assert addClasspathButton != null : "fx:id=\"addClasspathButton\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert addExcludeButton != null : "fx:id=\"addExcludeButton\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert classpathTextArea != null : "fx:id=\"classpathTextArea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
-		assert classpathTextfield != null : "fx:id=\"classpathTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert definedSlices != null : "fx:id=\"definedSlices\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert degraphPath != null : "fx:id=\"degraphPath\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert excludeTextArea != null : "fx:id=\"excludeTextArea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
