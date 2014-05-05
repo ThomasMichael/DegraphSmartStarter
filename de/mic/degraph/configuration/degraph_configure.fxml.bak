@@ -92,13 +92,17 @@
               <content>
                 <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="388.0" prefWidth="779.0">
                   <children>
-                    <HBox id="HBox" alignment="CENTER" layoutX="57.0" layoutY="218.0" spacing="5.0">
+                    <HBox id="HBox" alignment="CENTER" layoutX="58.0" layoutY="226.0" spacing="5.0">
                       <children>
-                        <TextField id="filenameTextfield" fx:id="pathToYedConfig" editable="false" prefWidth="547.2890625" promptText="for filename" text="" />
-                        <Button id="filenameSave" fx:id="graphmlSaveAs" mnemonicParsing="false" onAction="#graphmlSaveAsAction" text="Save as" />
+                        <HBox id="HBox" alignment="CENTER" spacing="5.0">
+                          <children>
+                            <Button id="filenameSave" fx:id="graphmlSaveAs" mnemonicParsing="false" onAction="#graphmlSaveAsAction" text="Save as" />
+                          </children>
+                        </HBox>
+                        <Label fx:id="pathTographml" prefWidth="484.0" text="Label" />
                       </children>
                     </HBox>
-                    <Text font="$x1" layoutX="58.0" layoutY="216.0" scaleX="1.0241372770884187" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename for yED" />
+                    <Text font="$x1" layoutX="59.0" layoutY="221.0" scaleX="1.0241372770884187" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename for yED" />
                     <HBox id="HBox" alignment="CENTER" layoutX="57.0" layoutY="98.0" spacing="5.0">
                       <children>
                         <TextField id="" fx:id="pathToDegraph" prefWidth="548.0" promptText="path to degraph.jar" />
@@ -120,10 +124,14 @@
                     </Button>
                     <Label font="$x3" layoutX="0.0" layoutY="2.0" text="5." />
                     <Text font="$x4" layoutX="55.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Path to degraph, yed and yed-file." />
-                    <HBox id="HBox" alignment="CENTER" layoutX="57.0" layoutY="183.0" spacing="5.0">
+                    <HBox id="HBox" alignment="CENTER" layoutX="57.0" layoutY="186.0" spacing="5.0">
                       <children>
-                        <TextField id="filenameTextfield" fx:id="pathToDegraphConfig" editable="false" prefWidth="547.2890625" promptText="config file name" text="" />
-                        <Button id="filenameSave" mnemonicParsing="false" onAction="#saveAsConfigFileAction" text="Save as" />
+                        <HBox id="HBox" alignment="CENTER" spacing="5.0">
+                          <children>
+                            <Button id="filenameSave" mnemonicParsing="false" onAction="#saveAsConfigFileAction" text="Save as" />
+                          </children>
+                        </HBox>
+                        <Label fx:id="pathToDegraphConfig" prefWidth="484.0" text="" />
                       </children>
                     </HBox>
                     <Text font="$x1" layoutX="60.0" layoutY="180.0" scaleX="1.0241372770884187" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename for THIS config file" />

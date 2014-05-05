@@ -10,6 +10,7 @@ import java.util.Set;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -72,13 +73,13 @@ public class DegraphConfigurator {
 	private TextField includeTextfield;
 
 	@FXML
-	private TextField pathTographml;
+	private Label pathTographml;
 
 	@FXML
 	private TextField pathToDegraph;
 
 	@FXML
-	private TextField pathToDegraphConfig;
+	private Label pathToDegraphConfig;
 
 	@FXML
 	private TextField pathToYed;
