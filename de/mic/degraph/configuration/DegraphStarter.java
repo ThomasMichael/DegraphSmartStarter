@@ -6,26 +6,39 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * This class starts Degraph with the configfile.
+ * 
+ */
 public class DegraphStarter {
 
-	public String start(File pathToDegraph, File configFile) {
+	public void start(final DegraphMessage degraphMessage,
+			final File pathToDegraph, final File configFile) {
+		Runnable runnable = new Runnable() {
 
-		// Start degraph
-		String degraphStartCommand = pathToDegraph.getAbsolutePath() + " -f "
-				+ configFile.getAbsolutePath();
-		System.out.println("Execute: " + degraphStartCommand);
-		ProcessBuilder pb = new ProcessBuilder("CMD", "/C", degraphStartCommand);
-		pb.directory(new File(File.separator));
-		String message = "no Message";
-		try {
-			Process process = pb.start();
+			@Override
+			public void run() {
+				// Start degraph
+				String degraphStartCommand = pathToDegraph.getAbsolutePath()
+						+ " -f " + configFile.getAbsolutePath();
+				System.out.println("Execute: " + degraphStartCommand);
+				ProcessBuilder pb = new ProcessBuilder("CMD", "/C",
+						degraphStartCommand);
+				pb.directory(new File(File.separator));
+				String message = "no Message";
+				try {
+					Process process = pb.start();
 
-			message = getDegraphOutput(process);
+					message = getDegraphOutput(process);
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return message;
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				degraphMessage.setText(message);
+			}
+		};
+
+		new Thread(runnable).start();
 	}
 
 	private String getDegraphOutput(Process process) throws IOException {
@@ -33,18 +46,18 @@ public class DegraphStarter {
 		InputStreamReader isr = new InputStreamReader(is);
 		BufferedReader br = new BufferedReader(isr);
 		String line;
-		StringBuilder degrpahOutput = new StringBuilder();
+		StringBuilder degraphOutput = new StringBuilder();
 		int count = 0;
 		while ((line = br.readLine()) != null) {
-			degrpahOutput.append(line);
+			degraphOutput.append(line);
 			System.out.println(count++ + " : " + line);
 		}
 		// searching for degraph output
 		// expecting something like 'Found 252 nodes, with 0 slice edges in
 		// violation of dependency constraints.'
 		System.out.println("Line: " + line);
-		if (degrpahOutput.length() != 0) {
-			return degrpahOutput.toString();
+		if (degraphOutput.length() != 0) {
+			return degraphOutput.toString();
 		} else {
 
 			return "Degraph found nothing!";
