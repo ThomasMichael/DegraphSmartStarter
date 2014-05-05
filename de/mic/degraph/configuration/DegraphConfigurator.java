@@ -3,6 +3,7 @@ package de.mic.degraph.configuration;
 import static de.mic.degraph.configuration.util.StringUtil.CRLF;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -25,6 +26,9 @@ import de.mic.degraph.configuration.types.YedOutput;
 
 public class DegraphConfigurator {
 
+	private static final String DEGRAPH_CONFIG_EXTENSION = ".config";
+	private static final String YED_EXTENSION = ".graphml";
+
 	private static final String YED_JAR = "yed.jar";
 
 	private static final String DEGRAPH_JAR = "degraph*.bat";
@@ -42,7 +46,7 @@ public class DegraphConfigurator {
 	private TextArea classpathTextArea;
 
 	@FXML
-	private TextArea definedSlices;
+	private TextArea definedGroups;
 
 	@FXML
 	private TextArea excludeTextArea;
@@ -168,24 +172,28 @@ public class DegraphConfigurator {
 	void graphmlSaveAsAction(ActionEvent event) {
 		FileChooser fileChooser = createFileChooser("Save as..");
 		fileChooser.getExtensionFilters().add(
-				new ExtensionFilter("yed", "graphml"));
+				new ExtensionFilter("yed", "*.graphml"));
 		Window stage = graphmlSaveAs.getScene().getWindow();
 		File fileToSave = fileChooser.showSaveDialog(stage);
 		System.out.println("File: " + fileToSave);
-		data.setOutput(new YedOutput(fileToSave));
+		data.setOutput(new YedOutput(new File(fileToSave.getAbsoluteFile()
+				+ YED_EXTENSION)));
 	}
 
 	@FXML
 	void saveAsConfigFileAction(ActionEvent event) {
 		FileChooser fileChooser = createFileChooser("Save as..");
-		fileChooser.getExtensionFilters().add(
-				new ExtensionFilter("Degraph Config", "config"));
+		fileChooser.getExtensionFilters()
+				.add(new ExtensionFilter("Degraph Config",
+						DEGRAPH_CONFIG_EXTENSION));
 		Window stage = graphmlSaveAs.getScene().getWindow();
 		File fileToSave = fileChooser.showSaveDialog(stage);
 		System.out.println("File: " + fileToSave);
 		if (fileToSave != null) {
-			data.setDegraphConfig(fileToSave);
-			this.pathToDegraphConfig.setText(fileToSave.getAbsolutePath());
+			data.setDegraphConfig(new File(fileToSave.getAbsoluteFile()
+					+ DEGRAPH_CONFIG_EXTENSION));
+			this.pathToDegraphConfig.setText(fileToSave.getAbsolutePath()
+					+ DEGRAPH_CONFIG_EXTENSION);
 		}
 	}
 
@@ -200,8 +208,22 @@ public class DegraphConfigurator {
 
 		System.out.println("Config-File:");
 		System.out.println(data);
-		new ConfigFileBuilder().build(data);
+		File configFile = new ConfigFileBuilder().build(data);
 		// Start degraph
+		String degraphStartCommand = this.pathToDegraph.getText() + " -f "
+				+ pathToDegraphConfig.getText();
+		System.out.println("Execute: " + degraphStartCommand);
+		ProcessBuilder pb = new ProcessBuilder(degraphStartCommand);
+
+		pb.redirectOutput(new File(File.separator + "tmp.log"));
+		try {
+			Runtime.getRuntime().exec(degraphStartCommand);
+			// pb.start();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Fertig!");
 	}
 
 	@FXML
@@ -226,7 +248,7 @@ public class DegraphConfigurator {
 	void initialize() {
 		assert addExcludeButton != null : "fx:id=\"addExcludeButton\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert classpathTextArea != null : "fx:id=\"classpathTextArea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
-		assert definedSlices != null : "fx:id=\"definedSlices\" was not injected: check your FXML file 'degraph_configure.fxml'.";
+		assert definedGroups != null : "fx:id=\"definedGroups\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert excludeTextArea != null : "fx:id=\"excludeTextArea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert excludeTextfield != null : "fx:id=\"excludeTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert filenameTextfield != null : "fx:id=\"filenameTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
@@ -240,8 +262,8 @@ public class DegraphConfigurator {
 		assert pathToYed != null : "fx:id=\"pathToYed\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert searchClasspath != null : "fx:id=\"searchClasspath\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert searchYedButton != null : "fx:id=\"searchYedButton\" was not injected: check your FXML file 'degraph_configure.fxml'.";
-		assert groupTextarea != null : "fx:id=\"sliceTextarea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
-		assert groupTextfield != null : "fx:id=\"sliceTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
+		assert groupTextarea != null : "fx:id=\"groupTextarea\" was not injected: check your FXML file 'degraph_configure.fxml'.";
+		assert groupTextfield != null : "fx:id=\"groupTextfield\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		assert startDegraph != null : "fx:id=\"startDegraph\" was not injected: check your FXML file 'degraph_configure.fxml'.";
 		// Setting path to degraph and yED
 		new ManageFileFinder(pathToDegraph).findFileAndSet(DEGRAPH_JAR);
