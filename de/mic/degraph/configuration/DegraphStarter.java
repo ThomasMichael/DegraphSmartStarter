@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 
 public class DegraphStarter {
 
-	public void start(File pathToDegraph, File configFile) {
+	public String start(File pathToDegraph, File configFile) {
 
 		// Start degraph
 		String degraphStartCommand = pathToDegraph.getAbsolutePath() + " -f "
@@ -16,24 +16,38 @@ public class DegraphStarter {
 		System.out.println("Execute: " + degraphStartCommand);
 		ProcessBuilder pb = new ProcessBuilder("CMD", "/C", degraphStartCommand);
 		pb.directory(new File(File.separator));
-		// pb.redirectOutput(new File(File.separator + "tmp.log"));
+		String message = "no Message";
 		try {
-			// Runtime.getRuntime().exec(degraphStartCommand);
 			Process process = pb.start();
 
-			InputStream is = process.getInputStream();
-			InputStreamReader isr = new InputStreamReader(is);
-			BufferedReader br = new BufferedReader(isr);
-			String line;
-
-			while ((line = br.readLine()) != null) {
-				System.out.println(line);
-			}
+			message = getDegraphOutput(process);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Fertig!");
+		return message;
+	}
+
+	private String getDegraphOutput(Process process) throws IOException {
+		InputStream is = process.getInputStream();
+		InputStreamReader isr = new InputStreamReader(is);
+		BufferedReader br = new BufferedReader(isr);
+		String line;
+		StringBuilder degrpahOutput = new StringBuilder();
+		int count = 0;
+		while ((line = br.readLine()) != null) {
+			degrpahOutput.append(line);
+			System.out.println(count++ + " : " + line);
+		}
+		// searching for degraph output
+		// expecting something like 'Found 252 nodes, with 0 slice edges in
+		// violation of dependency constraints.'
+		System.out.println("Line: " + line);
+		if (degrpahOutput.length() != 0) {
+			return degrpahOutput.toString();
+		} else {
+
+			return "Degraph found nothing!";
+		}
 	}
 }

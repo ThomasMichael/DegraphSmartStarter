@@ -8,14 +8,22 @@ import java.util.ResourceBundle;
 import java.util.Set;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBoxBuilder;
+import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 import de.mic.degraph.configuration.types.Cluding;
 import de.mic.degraph.configuration.types.Excluding;
@@ -211,8 +219,29 @@ public class DegraphConfigurator {
 	void startDegraphAction(ActionEvent event) {
 		// create Config
 		File configFile = new ConfigFileBuilder().build(data);
-		new DegraphStarter().start(new File(pathToDegraph.getText()),
-				configFile);
+		String message = new DegraphStarter().start(
+				new File(pathToDegraph.getText()), configFile);
+		popupDepgraphResponse(message);
+	}
+
+	public void popupDepgraphResponse(String message) {
+		final Stage myDialog = new Stage();
+		myDialog.initModality(Modality.APPLICATION_MODAL);
+		myDialog.setTitle("Degraph output.");
+		Button okButton = new Button("Ok");
+		okButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent arg0) {
+				myDialog.close();
+			}
+		});
+
+		Scene myDialogScene = new Scene(VBoxBuilder.create()
+				.children(new Text(message), okButton).spacing(30)
+				.alignment(Pos.CENTER).padding(new Insets(10)).build());
+
+		myDialog.setScene(myDialogScene);
+		myDialog.show();
 	}
 
 	@FXML
