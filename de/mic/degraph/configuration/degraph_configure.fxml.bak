@@ -3,12 +3,13 @@
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" minWidth="-1.0" onMouseEntered="#startDegraphFinder" prefHeight="500.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="de.mic.degraph.configuration.DegraphConfigurator">
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" minWidth="-1.0" onMouseEntered="#startDegraphFinder" prefHeight="509.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="de.mic.degraph.configuration.DegraphConfigurator">
   <children>
     <AnchorPane layoutX="10.0" layoutY="14.0" minHeight="52.0" prefHeight="52.0" prefWidth="774.0">
       <children>
@@ -17,7 +18,7 @@
             <Font name="Rod" size="28.0" />
           </font>
         </Text>
-        <TabPane layoutX="-7.0" layoutY="53.0" prefHeight="419.0" prefWidth="779.0" tabClosingPolicy="UNAVAILABLE">
+        <TabPane layoutX="-7.0" layoutY="53.0" prefHeight="442.0" prefWidth="779.0" tabClosingPolicy="UNAVAILABLE">
           <tabs>
             <Tab text="Classpath">
               <content>
@@ -29,7 +30,7 @@
                       </font>
                     </Text>
                     <Button id="searchYedButton" fx:id="searchClasspath" layoutX="62.0" layoutY="95.0" mnemonicParsing="false" onAction="#openClasspathSearchDialog" text="Search and add" />
-                    <TextArea fx:id="classpathTextArea" layoutX="62.0" layoutY="131.0" prefHeight="148.0" prefWidth="616.0" promptText="classpaths" wrapText="true" />
+                    <TextArea fx:id="classpathTextArea" editable="false" layoutX="62.0" layoutY="131.0" prefHeight="148.0" prefWidth="288.0" promptText="classpaths" wrapText="true" />
                     <Text font="$x1" layoutX="62.0" layoutY="92.0" scaleX="1.0" scaleY="0.9999916666668772" strokeType="OUTSIDE" strokeWidth="0.0" text="Classpath" />
                     <Label layoutX="0.0" layoutY="0.0" text="1.">
                       <font>
@@ -41,6 +42,11 @@
                         <Font name="Rod" size="24.0" fx:id="x4" />
                       </font>
                     </Text>
+                    <TextArea blendMode="SRC_OVER" cache="true" cacheHint="DEFAULT" depthTest="INHERIT" editable="false" layoutX="444.0" layoutY="131.0" mouseTransparent="false" prefHeight="73.0" prefWidth="279.0" text="Classpath - this is the path to analyze.&#10;All class and jar files found in those directories or subdirectories will get picked up by Degraph. " wrapText="true">
+                      <effect>
+                        <DropShadow height="29.095238095238095" radius="12.023809523809524" />
+                      </effect>
+                    </TextArea>
                   </children>
                 </AnchorPane>
               </content>
@@ -50,10 +56,15 @@
                 <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
                     <Text font="$x4" layoutX="64.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which classes, packages should be analyzed" />
-                    <TextField fx:id="includeTextfield" layoutX="64.0" layoutY="94.0" prefWidth="235.0" />
+                    <TextField fx:id="includeTextfield" layoutX="64.0" layoutY="94.0" prefWidth="235.0" promptText="org.hibernate.**" />
                     <Button fx:id="includeButton" layoutX="304.0" layoutY="95.0" mnemonicParsing="false" onAction="#addIncludeAction" text="Add" />
-                    <TextArea fx:id="includeTextArea" layoutX="64.0" layoutY="116.0" prefWidth="235.0" wrapText="true" />
+                    <TextArea fx:id="includeTextArea" editable="false" layoutX="64.0" layoutY="116.0" prefWidth="235.0" wrapText="true" />
                     <Label font="$x3" layoutX="0.0" layoutY="0.0" text="2." />
+                    <TextArea blendMode="SRC_OVER" cache="true" cacheHint="DEFAULT" depthTest="INHERIT" editable="false" layoutX="444.0" layoutY="131.0" mouseTransparent="false" prefHeight="155.0" prefWidth="279.0" text="Include an Ant like pattern of class names to include from the analysis. If not specified, all classes (minus any excludes) are inlcuded. There can be an arbitrary number of exclude and includes specified and the order does not matter.&#10; &#10;Example: org.hibernate.**&#10;&#10;Hint: Need 2 stars" wrapText="true">
+                      <effect>
+                        <DropShadow height="29.095238095238095" radius="12.023809523809524" />
+                      </effect>
+                    </TextArea>
                     <Text font="$x4" layoutX="64.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="by degraph." />
                   </children>
                 </AnchorPane>
@@ -61,16 +72,21 @@
             </Tab>
             <Tab text="Grouping">
               <content>
-                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="255.0" prefWidth="621.0">
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="779.0">
                   <children>
-                    <Text font="$x1" layoutX="55.0" layoutY="105.0" scaleX="1.0" scaleY="0.9999916666668772" strokeType="OUTSIDE" strokeWidth="0.0" text="Group name" />
-                    <TextField id="sliceTextfield" fx:id="groupTextfield" layoutX="54.0" layoutY="108.0" prefWidth="337.0" promptText="name of group" text="" />
-                    <TextArea id="include" fx:id="groupTextarea" layoutX="54.0" layoutY="130.0" prefHeight="148.0" prefWidth="336.0546875" promptText="com.myPackage.**" wrapText="true" />
-                    <Button id="sliceButtoon" fx:id="groupButtoon" layoutX="55.0" layoutY="278.0" mnemonicParsing="false" onAction="#addGroupAction" text="Add Group" />
-                    <TextArea id="sliceTextarea" fx:id="definedGroups" layoutX="467.0" layoutY="129.0" prefHeight="148.0" prefWidth="270.0" promptText="MyGroup = com.myPackage.**;com.theirPackage.**" wrapText="true" />
-                    <Text font="$x1" layoutX="467.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defined Group" />
+                    <Text font="$x1" layoutX="59.0" layoutY="79.0" scaleX="1.0" scaleY="0.9999916666668772" strokeType="OUTSIDE" strokeWidth="0.0" text="Group name" />
+                    <TextField id="sliceTextfield" fx:id="groupTextfield" layoutX="56.0" layoutY="82.0" prefWidth="288.046875" promptText="name of group" text="" />
+                    <TextArea id="include" fx:id="groupTextarea" layoutX="56.0" layoutY="104.0" prefHeight="105.0" prefWidth="289.0" promptText="com.myPackage.**" wrapText="true" />
+                    <Button id="sliceButtoon" fx:id="groupButtoon" layoutX="59.0" layoutY="210.0" mnemonicParsing="false" onAction="#addGroupAction" text="Add Group" />
+                    <TextArea id="sliceTextarea" fx:id="definedGroups" layoutX="56.0" layoutY="251.0" prefHeight="148.0" prefWidth="285.046875" promptText="MyGroup = com.myPackage.**;com.theirPackage.**" wrapText="true" />
+                    <Text font="$x1" layoutX="56.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defined Group" />
                     <Text font="$x4" layoutX="56.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group your packages." />
                     <Label font="$x3" layoutX="0.0" layoutY="0.0" text="3." />
+                    <TextArea layoutX="353.0" layoutY="82.0" prefHeight="277.0" prefWidth="414.0" text="Slicing/Grouping&#10;&#10;You can specify an arbitrary number of slicings through your code base. A slicing is a grouping of classes that in some sense belong to each other. Examples might be:&#10;&#10;   - classes belonging to the same library, like hibernate, log4j and so on.&#10;   - classes belonging to the same module, like shoppingcart, authentication, fullfillment.&#10;   - classes belonging to the same layer, like UI, domain, persistence, restapi&#10;   - classes belonging to your code vs. external stuff: internal, external&#10;&#10;Example: org.myPackage.(*).** for group all after myPackage&#10;or&#10;org.(hibernate).** for grouping one slice with hibernate.&#10;" wrapText="true">
+                      <effect>
+                        <DropShadow />
+                      </effect>
+                    </TextArea>
                   </children>
                 </AnchorPane>
               </content>
@@ -81,8 +97,13 @@
                   <children>
                     <TextField fx:id="excludeTextfield" layoutX="64.0" layoutY="94.0" prefWidth="235.0" promptText="org.something.**" text="" />
                     <Button id="addExclude" fx:id="addExcludeButton" layoutX="304.0" layoutY="95.0" mnemonicParsing="false" onAction="#addExcludeAction" text="Add" />
-                    <TextArea fx:id="excludeTextArea" layoutX="64.0" layoutY="116.0" prefWidth="235.0" promptText="java*.**" text="" wrapText="true" />
+                    <TextArea fx:id="excludeTextArea" editable="false" layoutX="64.0" layoutY="116.0" prefWidth="235.0" promptText="java*.**" text="" wrapText="true" />
                     <Text font="$x4" layoutX="55.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exclude packages." />
+                    <TextArea blendMode="SRC_OVER" cache="true" cacheHint="DEFAULT" depthTest="INHERIT" editable="false" layoutX="444.0" layoutY="131.0" mouseTransparent="false" prefHeight="124.0" prefWidth="279.0" text="Exclude an Ant like pattern of class names to exclude from the analysis.&#10; &#10;Example: org.hibernate.**&#10;&#10;Hint: Need 2 stars" wrapText="true">
+                      <effect>
+                        <DropShadow height="29.095238095238095" radius="12.023809523809524" />
+                      </effect>
+                    </TextArea>
                     <Label font="$x3" layoutX="0.0" layoutY="0.0" text="4." />
                   </children>
                 </AnchorPane>
@@ -99,7 +120,7 @@
                             <Button id="filenameSave" fx:id="graphmlSaveAs" mnemonicParsing="false" onAction="#graphmlSaveAsAction" text="Save as" />
                           </children>
                         </HBox>
-                        <Label fx:id="pathTographml" prefWidth="484.0" text="Label" />
+                        <Label fx:id="pathTographml" prefWidth="484.0" text="&lt;&lt; no filename &gt;&gt;" />
                       </children>
                     </HBox>
                     <Text font="$x1" layoutX="59.0" layoutY="221.0" scaleX="1.0241372770884187" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename for yED" />
@@ -131,7 +152,7 @@
                             <Button id="filenameSave" mnemonicParsing="false" onAction="#saveAsConfigFileAction" text="Save as" />
                           </children>
                         </HBox>
-                        <Label fx:id="pathToDegraphConfig" prefWidth="484.0" text="" />
+                        <Label fx:id="pathToDegraphConfig" prefWidth="484.0" text="&lt;&lt; no filename &gt;&gt;" />
                       </children>
                     </HBox>
                     <Text font="$x1" layoutX="60.0" layoutY="180.0" scaleX="1.0241372770884187" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename for THIS config file" />
