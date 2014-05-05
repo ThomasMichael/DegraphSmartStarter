@@ -72,6 +72,9 @@ public class DegraphConfigurator {
 	private TextField includeTextfield;
 
 	@FXML
+	private TextField pathTographml;
+
+	@FXML
 	private TextField pathToDegraph;
 
 	@FXML
@@ -175,9 +178,10 @@ public class DegraphConfigurator {
 				new ExtensionFilter("yed", "*.graphml"));
 		Window stage = graphmlSaveAs.getScene().getWindow();
 		File fileToSave = fileChooser.showSaveDialog(stage);
-		System.out.println("File: " + fileToSave);
-		data.setOutput(new YedOutput(new File(fileToSave.getAbsoluteFile()
-				+ YED_EXTENSION)));
+		File yedConfigFile = new File(fileToSave.getAbsoluteFile()
+				+ YED_EXTENSION);
+		data.setOutput(new YedOutput(yedConfigFile));
+		this.pathTographml.setText(yedConfigFile.getAbsolutePath());
 	}
 
 	@FXML

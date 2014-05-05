@@ -65,9 +65,9 @@
                   <children>
                     <Text font="$x1" layoutX="55.0" layoutY="105.0" scaleX="1.0" scaleY="0.9999916666668772" strokeType="OUTSIDE" strokeWidth="0.0" text="Group name" />
                     <TextField id="sliceTextfield" fx:id="groupTextfield" layoutX="54.0" layoutY="108.0" prefWidth="337.0" promptText="name of group" text="" />
-                    <TextArea id="include" fx:id="sliceTextarea" layoutX="54.0" layoutY="130.0" prefHeight="148.0" prefWidth="336.0546875" promptText="com.myPackage.**" wrapText="true" />
+                    <TextArea id="include" fx:id="groupTextarea" layoutX="54.0" layoutY="130.0" prefHeight="148.0" prefWidth="336.0546875" promptText="com.myPackage.**" wrapText="true" />
                     <Button id="sliceButtoon" fx:id="groupButtoon" layoutX="55.0" layoutY="278.0" mnemonicParsing="false" onAction="#addGroupAction" text="Add Group" />
-                    <TextArea id="sliceTextarea" fx:id="definedSlices" layoutX="467.0" layoutY="129.0" prefHeight="148.0" prefWidth="270.0" promptText="MyGroup = com.myPackage.**;com.theirPackage.**" wrapText="true" />
+                    <TextArea id="sliceTextarea" fx:id="definedGroups" layoutX="467.0" layoutY="129.0" prefHeight="148.0" prefWidth="270.0" promptText="MyGroup = com.myPackage.**;com.theirPackage.**" wrapText="true" />
                     <Text font="$x1" layoutX="467.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defined Group" />
                     <Text font="$x4" layoutX="56.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group your packages." />
                     <Label font="$x3" layoutX="0.0" layoutY="0.0" text="3." />
@@ -94,7 +94,7 @@
                   <children>
                     <HBox id="HBox" alignment="CENTER" layoutX="57.0" layoutY="218.0" spacing="5.0">
                       <children>
-                        <TextField fx:id="filenameTextfield" editable="false" prefWidth="547.2890625" promptText="for filename" text="" />
+                        <TextField id="filenameTextfield" fx:id="pathToYedConfig" editable="false" prefWidth="547.2890625" promptText="for filename" text="" />
                         <Button id="filenameSave" fx:id="graphmlSaveAs" mnemonicParsing="false" onAction="#graphmlSaveAsAction" text="Save as" />
                       </children>
                     </HBox>
