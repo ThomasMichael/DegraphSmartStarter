@@ -52,7 +52,7 @@ public class ConfigDataHolder {
 	 * @param slice
 	 */
 	public void addGroup(Group slice) {
-		this.groups.addSlice(slice);
+		this.groups.addGroup(slice);
 
 	}
 

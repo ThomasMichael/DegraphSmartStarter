@@ -12,15 +12,15 @@ import java.util.List;
 public class Groups {
 	List<Group> groups = new ArrayList<>();
 
-	public void addSlice(Group group) {
+	public void addGroup(Group group) {
 		groups.add(group);
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		for (Group slice : groups) {
-			sb.append(slice.toString());
+		for (Group group : groups) {
+			sb.append(group.toString());
 			sb.append("\n\r");
 		}
 		return sb.toString();
