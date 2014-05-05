@@ -24,13 +24,9 @@ public class ConfigDataHolder {
 
 	private YedOutput output;
 	private final ClassPathes classpaths = new ClassPathes();
-	private final Groups slices = new Groups();
+	private final Groups groups = new Groups();
 	private final Cludings cludings = new Cludings();
 	private File degraphConfigFile;
-
-	public ConfigDataHolder() {
-		super();
-	}
 
 	@Override
 	public String toString() {
@@ -38,7 +34,7 @@ public class ConfigDataHolder {
 		sb.append(output == null ? "noName" + CRLF : output.toString());
 		sb.append(classpaths.toString());
 		sb.append(cludings.toString());
-		sb.append(slices.toString());
+		sb.append(groups.toString());
 		return sb.toString();
 	}
 
@@ -56,7 +52,7 @@ public class ConfigDataHolder {
 	 * @param slice
 	 */
 	public void addGroup(Group slice) {
-		this.slices.addSlice(slice);
+		this.groups.addSlice(slice);
 
 	}
 
@@ -103,4 +99,9 @@ public class ConfigDataHolder {
 	public Set<Cluding> getExcludes() {
 		return cludings.getCluding(Excluding.class);
 	}
+
+	public Groups getGroups() {
+		return groups;
+	}
+
 }

@@ -3,7 +3,6 @@ package de.mic.degraph.configuration;
 import static de.mic.degraph.configuration.util.StringUtil.CRLF;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -105,6 +104,7 @@ public class DegraphConfigurator {
 		if (!groupTextfield.getText().isEmpty()) {
 			data.addGroup(new Group(groupTextfield.getText(), groupTextarea
 					.getText()));
+			this.definedGroups.setText(data.getGroups().toString());
 		}
 	}
 
@@ -183,9 +183,9 @@ public class DegraphConfigurator {
 	@FXML
 	void saveAsConfigFileAction(ActionEvent event) {
 		FileChooser fileChooser = createFileChooser("Save as..");
-		fileChooser.getExtensionFilters()
-				.add(new ExtensionFilter("Degraph Config",
-						DEGRAPH_CONFIG_EXTENSION));
+		fileChooser.getExtensionFilters().add(
+				new ExtensionFilter("Degraph Config", "*"
+						+ DEGRAPH_CONFIG_EXTENSION));
 		Window stage = graphmlSaveAs.getScene().getWindow();
 		File fileToSave = fileChooser.showSaveDialog(stage);
 		System.out.println("File: " + fileToSave);
@@ -205,25 +205,10 @@ public class DegraphConfigurator {
 
 	@FXML
 	void startDegraphAction(ActionEvent event) {
-
-		System.out.println("Config-File:");
-		System.out.println(data);
+		// create Config
 		File configFile = new ConfigFileBuilder().build(data);
-		// Start degraph
-		String degraphStartCommand = this.pathToDegraph.getText() + " -f "
-				+ pathToDegraphConfig.getText();
-		System.out.println("Execute: " + degraphStartCommand);
-		ProcessBuilder pb = new ProcessBuilder(degraphStartCommand);
-
-		pb.redirectOutput(new File(File.separator + "tmp.log"));
-		try {
-			Runtime.getRuntime().exec(degraphStartCommand);
-			// pb.start();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("Fertig!");
+		new DegraphStarter().start(new File(pathToDegraph.getText()),
+				configFile);
 	}
 
 	@FXML
