@@ -18,6 +18,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Window;
+import de.mic.degraph.configuration.external.ProcessStarter;
 import de.mic.degraph.configuration.types.Cluding;
 import de.mic.degraph.configuration.types.Excluding;
 import de.mic.degraph.configuration.types.Group;
@@ -174,6 +175,10 @@ public class DegraphConfigurator {
 
 	@FXML
 	void startYedAction(ActionEvent event) {
+		ProcessStarter ps = new ProcessStarter();
+		String command = "java -jar \"" + this.pathToYed.getText() + "\" "
+				+ data.getOutput().getFilePath();
+		ps.startProcess(command);
 	}
 
 	@FXML

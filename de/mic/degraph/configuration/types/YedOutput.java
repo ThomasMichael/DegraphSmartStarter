@@ -23,4 +23,8 @@ public class YedOutput {
 	public String toString() {
 		return "output = " + filename.getAbsolutePath() + CRLF;
 	}
+
+	public String getFilePath() {
+		return filename.getAbsolutePath();
+	}
 }
