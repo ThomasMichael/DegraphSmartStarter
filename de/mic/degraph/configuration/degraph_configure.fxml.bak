@@ -58,7 +58,7 @@
                     <Text font="$x4" layoutX="64.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which classes, packages should be analyzed" />
                     <TextField fx:id="includeTextfield" layoutX="64.0" layoutY="94.0" prefWidth="235.0" promptText="org.hibernate.**" />
                     <Button fx:id="includeButton" layoutX="304.0" layoutY="95.0" mnemonicParsing="false" onAction="#addIncludeAction" text="Add" />
-                    <TextArea fx:id="includeTextArea" editable="false" layoutX="64.0" layoutY="116.0" prefWidth="235.0" wrapText="true" />
+                    <TextArea fx:id="includeTextArea" editable="false" layoutX="64.0" layoutY="116.0" prefWidth="235.0" promptText="de.mic.**" wrapText="true" />
                     <Label font="$x3" layoutX="0.0" layoutY="0.0" text="2." />
                     <TextArea blendMode="SRC_OVER" cache="true" cacheHint="DEFAULT" depthTest="INHERIT" editable="false" layoutX="444.0" layoutY="131.0" mouseTransparent="false" prefHeight="155.0" prefWidth="279.0" text="Include an Ant like pattern of class names to include from the analysis. If not specified, all classes (minus any excludes) are inlcuded. There can be an arbitrary number of exclude and includes specified and the order does not matter.&#10; &#10;Example: org.hibernate.**&#10;&#10;Hint: Need 2 stars" wrapText="true">
                       <effect>
@@ -140,7 +140,7 @@
                     </HBox>
                     <Button fx:id="startDegraph" layoutX="272.0" layoutY="321.0" mnemonicParsing="false" onAction="#startDegraphAction" style="fx-background-color: green;&#10;" text="Start Degraph" textOverrun="ELLIPSIS">
                       <font>
-                        <Font size="30.0" />
+                        <Font size="30.0" fx:id="x2" />
                       </font>
                     </Button>
                     <Label font="$x3" layoutX="0.0" layoutY="2.0" text="5." />
@@ -156,6 +156,7 @@
                       </children>
                     </HBox>
                     <Text font="$x1" layoutX="60.0" layoutY="180.0" scaleX="1.0241372770884187" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename for THIS config file" />
+                    <Button font="$x2" layoutX="568.0" layoutY="321.0" mnemonicParsing="false" text="yED" />
                   </children>
                 </AnchorPane>
               </content>

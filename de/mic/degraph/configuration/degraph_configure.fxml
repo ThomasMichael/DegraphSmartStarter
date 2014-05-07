@@ -140,7 +140,7 @@
                     </HBox>
                     <Button fx:id="startDegraph" layoutX="272.0" layoutY="321.0" mnemonicParsing="false" onAction="#startDegraphAction" style="fx-background-color: green;&#10;" text="Start Degraph" textOverrun="ELLIPSIS">
                       <font>
-                        <Font size="30.0" />
+                        <Font size="30.0" fx:id="x2" />
                       </font>
                     </Button>
                     <Label font="$x3" layoutX="0.0" layoutY="2.0" text="5." />
@@ -156,6 +156,7 @@
                       </children>
                     </HBox>
                     <Text font="$x1" layoutX="60.0" layoutY="180.0" scaleX="1.0241372770884187" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename for THIS config file" />
+                    <Button font="$x2" layoutX="568.0" layoutY="321.0" mnemonicParsing="false" onAction="#startYedAction" text="yED" />
                   </children>
                 </AnchorPane>
               </content>

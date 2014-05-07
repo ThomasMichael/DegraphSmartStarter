@@ -173,6 +173,10 @@ public class DegraphConfigurator {
 	}
 
 	@FXML
+	void startYedAction(ActionEvent event) {
+	}
+
+	@FXML
 	void graphmlSaveAsAction(ActionEvent event) {
 		FileChooser fileChooser = createFileChooser("Save as..");
 		fileChooser.getExtensionFilters().add(
