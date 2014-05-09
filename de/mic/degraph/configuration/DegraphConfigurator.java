@@ -103,6 +103,8 @@ public class DegraphConfigurator {
 	private final ConfigDataHolder data = new ConfigDataHolder();
 
 	private boolean notStarted = true;
+	// Workingdirectory from User
+	private File workingDirectory = null;
 
 	@FXML
 	void addGroupAction(ActionEvent event) {
@@ -182,7 +184,7 @@ public class DegraphConfigurator {
 	}
 
 	@FXML
-	void graphmlSaveAsAction(ActionEvent event) {
+	void openGraphmlSaveAsAction(ActionEvent event) {
 		FileChooser fileChooser = createFileChooser("Save as..");
 		fileChooser.getExtensionFilters().add(
 				new ExtensionFilter("yed", "*.graphml"));
@@ -190,18 +192,21 @@ public class DegraphConfigurator {
 		File fileToSave = fileChooser.showSaveDialog(stage);
 		File yedConfigFile = new File(fileToSave.getAbsoluteFile()
 				+ YED_EXTENSION);
+		setWorkingDirectory(yedConfigFile.getParent());
 		data.setOutput(new YedOutput(yedConfigFile));
 		this.pathTographml.setText(yedConfigFile.getAbsolutePath());
 	}
 
 	@FXML
-	void saveAsConfigFileAction(ActionEvent event) {
+	void openConfigFileAction(ActionEvent event) {
 		FileChooser fileChooser = createFileChooser("Save as..");
 		fileChooser.getExtensionFilters().add(
 				new ExtensionFilter("Degraph Config", "*"
 						+ DEGRAPH_CONFIG_EXTENSION));
+
 		Window stage = graphmlSaveAs.getScene().getWindow();
 		File fileToSave = fileChooser.showSaveDialog(stage);
+		setWorkingDirectory(fileToSave.getParent());
 		System.out.println("File: " + fileToSave);
 		if (fileToSave != null) {
 			data.setDegraphConfig(new File(fileToSave.getAbsoluteFile()
@@ -211,9 +216,28 @@ public class DegraphConfigurator {
 		}
 	}
 
+	private void setWorkingDirectory(String filepath) {
+		if (filepath != null) {
+			File file = new File(filepath);
+			if (file.isDirectory()) {
+
+				this.workingDirectory = file;
+			}
+		}
+
+	}
+
+	private void applyWorkingDirectory(FileChooser fileChooser) {
+		if (workingDirectory != null) {
+			fileChooser.setInitialDirectory(workingDirectory);
+		}
+
+	}
+
 	private FileChooser createFileChooser(String title) {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle(title);
+		applyWorkingDirectory(fileChooser);
 		return fileChooser;
 	}
 
